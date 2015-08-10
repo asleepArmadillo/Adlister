@@ -8,7 +8,10 @@
 <html>
 <head>
     <title>Instrument Exchange</title>
+    <!-- Bootstrap styling -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Custom styling for site -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
     <? include "../views/partials/header.php"; ?>
@@ -21,19 +24,19 @@
         </div>
 
         <!-- Figure out how to put a carousel later. -->
-
-        <ul>
-            <li>Accordion</li>
-            <li>Brass</li>
-            <li>Guitar</li>
-            <li>Harmonica</li>
-            <li>Percussion</li>
-            <li>Piano / Keys</li>
-            <li>String</li>
-            <li>Woodwind</li>
-            <li>Other</li>
-        </ul>
-
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            <div class="list-group">
+                <a href="#" class="list-group-item">Accordion</a>
+                <a href="#" class="list-group-item">Brass</a>
+                <a href="#" class="list-group-item">Guitar</a>
+                <a href="#" class="list-group-item">Harmonica</a>
+                <a href="#" class="list-group-item">Percussion</a>
+                <a href="#" class="list-group-item">Piano / Keys</a>
+                <a href="#" class="list-group-item">String</a>
+                <a href="#" class="list-group-item">Woodwind</a>
+                <a href="#" class="list-group-item">Other</a>
+            </ul>
+        </div>
 
     </div>
 
