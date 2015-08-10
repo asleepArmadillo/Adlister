@@ -20,7 +20,7 @@
 
     <div class="container">
         <div class="jumbotron container">
-            <h1>Welcome to Instrument Exchange.</h1>
+            <h1>Welcome to Instrument&nbsp;Exchange.</h1>
         </div>
 
         <!-- Figure out how to put a carousel later. -->
