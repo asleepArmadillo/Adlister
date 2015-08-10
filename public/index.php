@@ -24,7 +24,7 @@
         </div>
 
         <!-- Figure out how to put a carousel later. -->
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="col-xs-4 col-sm-3 sidebar-offcanvas" id="sidebar">
             <div class="list-group">
                 <a href="#" class="list-group-item">Accordion</a>
                 <a href="#" class="list-group-item">Brass</a>
