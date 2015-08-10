@@ -19,30 +19,24 @@
 
 
     <div class="container">
-        <div class="jumbotron container">
+        <!-- <div class="jumbotron container">
             <h1>Welcome to Instrument Exchange.</h1>
-        </div>
+        </div> -->
 
         <!-- Figure out how to put a carousel later. -->
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-            <div class="list-group">
-                <a href="#" class="list-group-item">Accordion</a>
-                <a href="#" class="list-group-item">Brass</a>
-                <a href="#" class="list-group-item">Guitar</a>
-                <a href="#" class="list-group-item">Harmonica</a>
-                <a href="#" class="list-group-item">Percussion</a>
-                <a href="#" class="list-group-item">Piano / Keys</a>
-                <a href="#" class="list-group-item">String</a>
-                <a href="#" class="list-group-item">Woodwind</a>
-                <a href="#" class="list-group-item">Other</a>
-            </div>
-        </div>
+
+
+        <!-- This include is for sidebar navigation -->
+        <? include "../views/partials/sidebar.php"; ?>
 
         <div class="row">
 
             <h2>Title</h2>
+
+            <img src="/img/guitar_450.jpg" class="pull-right">
+
             <h3>Details:</h3>
-            <ul>
+            <ul class="list-unstyled">
                 <li>Instrument Type:</li>
                 <li>Brand: </li>
                 <li>Year:</li>
