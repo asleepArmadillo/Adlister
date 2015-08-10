@@ -1,5 +1,3 @@
 # Adlister
 
-commit test - j
-
-success! - rp
+Adlister is a Ebay/Craigslist clone.
