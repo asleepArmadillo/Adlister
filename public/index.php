@@ -25,20 +25,6 @@
 
         <!-- Figure out how to put a carousel later. -->
 
-        <!-- <div class="col-xs-4 col-sm-3 sidebar-offcanvas" id="sidebar">
-            <div class="list-group">
-                <a href="#" class="list-group-item">Accordion</a>
-                <a href="#" class="list-group-item">Brass</a>
-                <a href="#" class="list-group-item">Guitar</a>
-                <a href="#" class="list-group-item">Harmonica</a>
-                <a href="#" class="list-group-item">Percussion</a>
-                <a href="#" class="list-group-item">Piano / Keys</a>
-                <a href="#" class="list-group-item">String</a>
-                <a href="#" class="list-group-item">Woodwind</a>
-                <a href="#" class="list-group-item">Other</a>
-            </div>
-        </div> -->
-
 
         <!-- This include is for sidebar navigation -->
         <? include "../views/partials/sidebar.php"; ?>
@@ -64,7 +50,7 @@
                     <div class="caption">
                         <h3>Thumbnail label</h3>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <a href="#" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
             </div>
