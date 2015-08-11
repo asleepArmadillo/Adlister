@@ -1,5 +1,6 @@
 <?php
 
+require_once 'ads.index.php';
 
 
 
@@ -31,27 +32,23 @@
 
         <div class="row">
 
-            <h2>Title</h2>
+            <h2><?= $ads[0]['title']; ?> - $<?= $ads[0]['price']; ?></h2>
 
-            <img src="/img/guitar_450.jpg" class="pull-right">
+            <img src="<?= $ads[0]['image_url']; ?>" class="pull-right">
+
 
             <h3>Details:</h3>
             <ul class="list-unstyled">
-                <li>Instrument Type:</li>
-                <li>Brand: </li>
-                <li>Year:</li>
-                <li>Condition: </li>
+                <li>Instrument Type: <?= $ads[0]['type']; ?></li>
+                <li>Brand: <?= $ads[0]['brand']; ?></li>
+                <li>Year: <?= $ads[0]['year']; ?></li>
+                <li>Condition: <?= $ads[0]['condition']; ?></li>
             </ul>
 
             <h3>Description:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p><?= $ads[0]['description']; ?></p>
 
-
+            <h3>Contact:</h3>
 
         </div>
 
