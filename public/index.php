@@ -24,6 +24,7 @@
         </div>
 
         <!-- Figure out how to put a carousel later. -->
+<<<<<<< HEAD
         <div class="col-xs-4 col-sm-3 sidebar-offcanvas" id="sidebar">
             <div class="list-group">
                 <a href="#" class="list-group-item">Accordion</a>
@@ -37,6 +38,12 @@
                 <a href="#" class="list-group-item">Other</a>
             </div>
         </div>
+=======
+
+        <!-- This include is for sidebar navigation -->
+        <? include "../views/partials/sidebar.php"; ?>
+        
+>>>>>>> c8d5737983b826b6b8608593b9188e7e2980f103
 
         <div class="row">
             <div class="col-sm-6 col-md-4">
