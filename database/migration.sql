@@ -6,6 +6,7 @@ CREATE TABLE instruments (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     title VARCHAR(100) NOT NULL,
+    type VARCHAR(100) NOT NULL,
     brand VARCHAR(100) NOT NULL,
     year INT,
     condition VARCHAR(50),
