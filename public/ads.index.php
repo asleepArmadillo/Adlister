@@ -4,7 +4,7 @@ $ads = [
     [
         'id'            =>1,
         'user_id'       =>1,
-        'name'          =>'Jaguar',
+        'title'         =>'Jaguar',
         'brand'         =>'Fender',
         'year'          =>1963,
         'condition'     =>'Excellent',
@@ -16,7 +16,7 @@ $ads = [
     [
         'id'            =>2,
         'user_id'       =>1,
-        'name'          =>'CONN 12M BARI SAX BARITONE SAXOPHONE',
+        'title'         =>'CONN 12M BARI SAX BARITONE SAXOPHONE',
         'brand'         =>'Conn',
         'year'          =>1967,
         'condition'     =>'Refurbished',
@@ -28,7 +28,7 @@ $ads = [
     [
         'id'            =>3,
         'user_id'       =>1,
-        'name'          =>'Hammond B3 organ with leslie cabinet',
+        'title'         =>'Hammond B3 organ with leslie cabinet',
         'brand'         =>'Hammond',
         'year'          =>1965,
         'condition'     =>'Very Good',
