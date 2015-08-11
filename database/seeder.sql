@@ -1,10 +1,31 @@
 USE adlister_db;
 
-TRUNCATE listings;
+-- TRUNCATE categories;
 
-INSERT INTO listings(title, type, brand, year, condition, price, image_url, description)
+INSERT INTO categories(type)
 
-VALUES  ('1963 Jaguar', 'guitar', 'Fender', 1963, 'Excellent', 2995.00, '/img/1.png',
+VALUES  ('accordion'), 
+        ('brass'), 
+        ('guitar'), 
+        ('harmonica'), 
+        ('percussion'), 
+        ('piano/keys'), 
+        ('string'), 
+        ('woodwind'), 
+        ('other');
+
+-- TRUNCATE users;
+
+INSERT INTO users(name, email, password, phone)
+
+VALUES  ('Josh', 'josh@example.com', '$2y$10$lAn86TmNViFkpqEAZtav2uFADg6tTWd1y0lQpsDcImMqTK7m3hXvC', 1112223333),
+        ('Rachel', 'rachel@example.com', '$2y$10$H58g1sNOZdSEuEGS5h7TF.ykS6n.ziISwjnoba2LOGr2jlPY.MZ6y', 2223334444);
+
+-- TRUNCATE listings;
+
+INSERT INTO listings(title, date_posted, category_id, user_id, brand, year, item_condition, price, image_url, description)
+
+VALUES  ('1963 Jaguar', '2015-08-11', 3, 1, 'Fender', 1963, 'Excellent', 2995.00, '/img/1.png',
             'This guitar was purchased from the original owner who was 
             in his late 60\'s.  He indicated  that he purchased this 
             guitar brand new in the mid-60s.  At some point in the mid 
@@ -25,7 +46,7 @@ VALUES  ('1963 Jaguar', 'guitar', 'Fender', 1963, 'Excellent', 2995.00, '/img/1.
             however, this guitar sounds awesome and plays like butter!!! 
             I also have the receipt for the work done on this guitar.'
         ),
-        ('CONN 12M BARI SAX BARITONE SAXOPHONE', 'woodwind', 'Conn', 1967, 'Refurbished', 2950.00, '/img/2.png',
+        ('CONN 12M BARI SAX BARITONE SAXOPHONE', '2015-08-11', 8, 2, 'Conn', 1967, 'Refurbished', 2950.00, '/img/2.png',
             'The restoration was done by a respected local craftsman 
             with over 40 years experience in woodwind and brass instrument 
             restorations and repairs. The shop’s woodwind specialist used 
@@ -34,7 +55,7 @@ VALUES  ('1963 Jaguar', 'guitar', 'Fender', 1963, 'Excellent', 2995.00, '/img/1.
             for over 10 years for my adult band members and myself.  
             Everyone has always been impressed with their work.'
         ),
-        ('Hammond B3 organ with leslie cabinet', 'piano/keys', 'Hammond', 1965, 'Very Good', 12500.00, '/img/3.png',
+        ('Hammond B3 organ with leslie cabinet', '2015-08-11', 6, 1, 'Hammond', 1965, 'Very Good', 12500.00, '/img/3.png',
             'For sale a 1965 Hammond Organ B3 serial number 95393 with 
             foot pedals and a 1965 model 122 Leslie speaker system number 
             27003. Both are in excellent physical condition except for a 
@@ -55,14 +76,3 @@ VALUES  ('1963 Jaguar', 'guitar', 'Fender', 1963, 'Excellent', 2995.00, '/img/1.
         );
 
 
-TRUNCATE categories;
-
-INSERT INTO categories(type)
-
-VALUES ();
-
-TRUNCATE users;
-
-INSERT INTO users(name, email, password, phone)
-
-VALUES ();
