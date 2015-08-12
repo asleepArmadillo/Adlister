@@ -8,6 +8,7 @@
         <a href="#" class="list-group-item">Piano / Keys</a>
         <a href="#" class="list-group-item">String</a>
         <a href="#" class="list-group-item">Woodwind</a>
+        <a href="#" class="list-group-item">Amplifier / Gear</a>
         <a href="#" class="list-group-item">Other</a>
     </div>
 </div>

@@ -16,6 +16,7 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="login.php">Log In / Sign Up</a></li>
+                <li><a href="ads.create.php">List Item</a></li>
 
               </ul>
             </div>
