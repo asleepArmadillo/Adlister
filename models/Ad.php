@@ -9,6 +9,10 @@ class Ad extends Model
         self::dbConnect();
         $stmt = self::$dbc->query('SELECT * FROM listings');
 
+
+        //this returns the category names: 
+        //SELECT instrument_type FROM categories LEFT JOIN listings ON listings.id = category_id;
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     // find one by passing id
