@@ -15,17 +15,11 @@ require_once 'ads.index.php';
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <? include "../views/partials/header.php"; ?>
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container">
-        <!-- <div class="jumbotron container">
-            <h1>Welcome to Instrument Exchange.</h1>
-        </div> -->
-
-        <!-- Figure out how to put a carousel later. -->
-
+    <div class="container main">
+    
 
         <!-- This include is for sidebar navigation -->
         <? include "../views/partials/sidebar.php"; ?>
@@ -49,6 +43,10 @@ require_once 'ads.index.php';
             <p><?= $ads[0]['description']; ?></p>
 
             <h3>Contact:</h3>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
 
         </div>
 
@@ -58,7 +56,8 @@ require_once 'ads.index.php';
 
     <? include "../views/partials/footer.php"; ?>
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>

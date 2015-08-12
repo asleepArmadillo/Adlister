@@ -14,21 +14,45 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <? include "../views/partials/header.php"; ?>
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container">
-        <h1>Log in or Create Account</h1>
-        <!-- This include is for sidebar navigation -->
-        <? include "../views/partials/sidebar.php"; ?>
+    <div class="container main">
+
+
+        <div class="loginFormFloat">
+            <h1>Log In or Create Account</h1>
         
+                <h2>Login for Existing Users</h2>
+                <form>
+                    <div class="form-group">
+                    <label for="InputEmailExisting">Email address</label>
+                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
+                    </div>
 
-        <div class="row">
-            <form>
-                
-            </form>
+                    <div class="form-group">
+                    <label for="InputPasswordExisting">Password</label>
+                    <input type="password" class="form-control" id="InputPasswordExisting" placeholder="Password">
+                    </div>
 
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        
+                <h2>Signup for New Users</h2>
+                <form>
+                    
+                    <div class="form-group">
+                    <label for="InputEmailNew">Email address</label>
+                    <input type="email" class="form-control" id="InputEmailNew" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                    <label for="InputPasswordExisting">Password</label>
+                    <input type="password" class="form-control" id="InputPasswordExisting" placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
 
         </div>
 
