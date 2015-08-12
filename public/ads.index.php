@@ -1,6 +1,6 @@
 <?php
 
-$ads = [
+$ads1 = [
     [
         'id'            =>1,
         'user_id'       =>1,
