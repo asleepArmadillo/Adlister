@@ -7,7 +7,12 @@ class Ad extends Model
     public static function all()
     {
         self::dbConnect();
-        $stmt = self::$dbc->query('SELECT * FROM listings');
+        $stmt = self::$dbc->query('SELECT L.title, L.price, L.image_url, L.description, L.year, C.type, U.name
+                                    FROM listings AS L
+                                    LEFT JOIN categories AS C 
+                                    ON L.category_id = C.id
+                                    LEFT JOIN users AS U
+                                    ON L.user_id = U.id');
 
 
         //this returns the category names: 

@@ -63,9 +63,9 @@ $addPark->save();*/
                             
                         <img class="img-thumbnail" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true" style="width: 200px; display: block;">
 
-                        <p><?= $ad['category_id']; ?></p>
-                        <p><?= mb_strimwidth($ad['description'], 0, strpos($ad['description'], ' ', 150), "..."); ?></p> 
-
+                        <p><?= $ad['type']; ?></p>
+                        <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p> 
+                        <p>Posted by: <?= $ad['name']?></p>
                         <a href="show.php?id=<?= $id; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
