@@ -10,7 +10,6 @@ var_dump($ads);
 
 
 
-
 /*$addPark = new Park ();
 $addPark->park = Input::getString('park');
 $addPark->location = Input::getString('location');
@@ -64,7 +63,7 @@ $addPark->save();*/
                     <img class="img-thumbnail" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true" style="width: 200px; display: block;">
 
                         
-                    <p><?= $ad['type']; ?></p>
+                    <p><?= $ad['category_id']; ?></p>
                     <p><?= mb_strimwidth($ad['description'], 0, strpos($ad['description'], ' ', 150), "..."); ?></p> 
 
                     <a href="#" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>

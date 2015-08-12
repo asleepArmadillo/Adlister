@@ -9,14 +9,7 @@ class Ad extends Model
         self::dbConnect();
         $stmt = self::$dbc->query('SELECT * FROM listings');
 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $instance = null;
-        if ($result) {
-            $instance = new static;
-            $instance->attributes = $result;
-        }
-        return $instance;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     // find one by passing id
     public static function find($id)
