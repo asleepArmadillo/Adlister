@@ -64,7 +64,7 @@ $addPark->save();*/
                         <p><?= $ad['category_id']; ?></p>
                         <p><?= mb_strimwidth($ad['description'], 0, strpos($ad['description'], ' ', 150), "..."); ?></p> 
 
-                        <a href="#" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a href="show.php?id=<?= $id; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
             <? endforeach; ?>

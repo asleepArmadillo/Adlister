@@ -1,8 +1,13 @@
 <?php
 
 require_once 'ads.index.php';
+require_once '../bootstrap.php';
 
+$ads = [];
 
+$ads = Ad::all();
+
+$id = Input::get('id');
 
 ?>
 
@@ -26,21 +31,21 @@ require_once 'ads.index.php';
 
         <div class="row">
 
-            <h2><?= $ads[0]['title']; ?> - $<?= $ads[0]['price']; ?></h2>
+            <h2><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h2>
 
-            <img src="<?= $ads[0]['image_url']; ?>" class="pull-right">
+            <img src="<?= $ads[$id]['image_url']; ?>" class="pull-right">
 
 
             <h3>Details:</h3>
             <ul class="list-unstyled">
-                <li>Instrument Type: <?= $ads[0]['type']; ?></li>
-                <li>Brand: <?= $ads[0]['brand']; ?></li>
-                <li>Year: <?= $ads[0]['year']; ?></li>
-                <li>Condition: <?= $ads[0]['condition']; ?></li>
+                <li>Instrument Type: <?= $ads[$id]['category_id']; ?></li>
+                <li>Brand: <?= $ads[$id]['brand']; ?></li>
+                <li>Year: <?= $ads[$id]['year']; ?></li>
+                <li>Condition: <?= $ads[$id]['item_condition']; ?></li>
             </ul>
 
             <h3>Description:</h3>
-            <p><?= substr($ads[0]['description'], 0, 100) . '...'; ?> </p>
+            <p><?= $ads[$id]['description']; ?> </p>
 
             <h3>Contact:</h3>
             <ul>
