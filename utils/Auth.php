@@ -5,7 +5,7 @@
 
 
 
-require_once 'Log.php';
+require_once 'Logger.php';
 require_once 'Input.php';
 
 class Auth {
