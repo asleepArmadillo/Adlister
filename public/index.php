@@ -7,25 +7,31 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Instrument Exchange</title>
-    <!-- Bootstrap styling -->
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Custom styling for site -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
 </head>
-<body>
-    <? include "../views/partials/header.php"; ?>
+  <body>
+    <!-- Top nav
+    ================================================== -->
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container">
-        <div class="jumbotron container">
-            <h1>Welcome to Instrument&nbsp;Exchange.</h1>
-        </div>
-
-        <!-- Figure out how to put a carousel later. -->
+    <!-- Carousel
+    ================================================== -->
+    <? include "../views/partials/carousel.php"; ?>
 
 
+    <!-- Container below the slider
+    ================================================== -->
+        <div class="container main">
         <!-- This include is for sidebar navigation -->
         <? include "../views/partials/sidebar.php"; ?>
         
@@ -91,6 +97,14 @@
     <? include "../views/partials/footer.php"; ?>
 
     
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>
