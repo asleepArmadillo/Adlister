@@ -19,7 +19,7 @@
           <img class="second-slide" src="/img/carousel/accordion.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Need to Make Room for More Equipment?</h1>
+              <h1>Need Room for More Equipment?</h1>
               <h2>Create a Listing for an Instrument (or Two!)</h2>
               <p><a class="btn btn-lg btn-primary" href="login.php" role="button">Log In Now</a></p>
             </div>

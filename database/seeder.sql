@@ -13,6 +13,7 @@ VALUES  ('accordion'),
         ('string'), 
         ('woodwind'), 
         ('other');
+        ('amplifier/gear');
 
 -- TRUNCATE users;
 
