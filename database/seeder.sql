@@ -14,7 +14,6 @@ VALUES  ('accordion'),
         ('woodwind'),
         ('amplifiers/gear'),
         ('other');
-        ('amplifier/gear');
 
 -- TRUNCATE users;
 
