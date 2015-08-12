@@ -40,7 +40,7 @@ require_once 'ads.index.php';
             </ul>
 
             <h3>Description:</h3>
-            <p><?= $ads[0]['description']; ?></p>
+            <p><?= substr($ads[0]['description'], 0, 100) . '...'; ?> </p>
 
             <h3>Contact:</h3>
             <ul>

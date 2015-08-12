@@ -1,10 +1,16 @@
 <?php
 
+define("DB_HOST", '127.0.0.1');
+define("DB_NAME", 'adlister_db'); 
+define("DB_USER", 'adlister_user'); 
+define("DB_PASS", 'asdf');
+
 class Model 
 {
 
     protected static $dbc;
     protected static $table;
+
 
     public $attributes = array();
 
@@ -16,11 +22,6 @@ class Model
 
     protected static function dbConnect()
     {
-    	define("DB_HOST", '127.0.0.1');
-		define("DB_NAME", 'adlister_db'); 
-		define("DB_USER", 'adlister_user'); 
-		define("DB_PASS", 'asdf');
-
         if (!self::$dbc)
         {
             self::$dbc = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
