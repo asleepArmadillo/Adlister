@@ -6,7 +6,7 @@ require_once '../bootstrap.php';
 $ads = [];
 
 $ads = Ad::all();
-var_dump($ads);
+// var_dump($ads);
 
 
 
@@ -35,58 +35,41 @@ $addPark->save();*/
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
 </head>
-  <body>
+<body>
     <!-- Top nav
     ================================================== -->
-    <?// include "../views/partials/navbar.php"; ?>
+    <? include "../views/partials/navbar.php"; ?>
 
 
     <!-- Carousel
     ================================================== -->
-    <?// include "../views/partials/carousel.php"; ?>
+    <? include "../views/partials/carousel.php"; ?>
 
 
     <!-- Container below the slider
     ================================================== -->
-        <div class="container main">
+    <div class="container main">
         <!-- This include is for sidebar navigation -->
         <? include "../views/partials/sidebar.php"; ?>
         
-
         <div class="row">
 
             <? foreach($ads as $id => $ad): ?>
-             <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
+                 <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
                         <h3><?= $ad['title']; ?> - $<?= $ad['price']; ?></h3>
-                        
-                    <img class="img-thumbnail" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true" style="width: 200px; display: block;">
+                            
+                        <img class="img-thumbnail" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true" style="width: 200px; display: block;">
 
-                        
-                    <p><?= $ad['category_id']; ?></p>
-                    <p><?= mb_strimwidth($ad['description'], 0, strpos($ad['description'], ' ', 150), "..."); ?></p> 
+                        <p><?= $ad['category_id']; ?></p>
+                        <p><?= mb_strimwidth($ad['description'], 0, strpos($ad['description'], ' ', 150), "..."); ?></p> 
 
-                    <a href="#" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                </div>
+                        <a href="#" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
                 </div>
             <? endforeach; ?>
-
-
-
-
-            
-
-                </div>
-            </div>
-
-            
-
-
         </div>
-
     </div>
-
 
 
     <? include "../views/partials/footer.php"; ?>
