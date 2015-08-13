@@ -61,7 +61,7 @@ if($_FILES) {
 
 
             <form method="POST" enctype="multipart/form-data">
-                
+
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
@@ -71,7 +71,7 @@ if($_FILES) {
                     </div>
                 </div>
 
-                
+
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
@@ -133,15 +133,17 @@ if($_FILES) {
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="Price">
-                        </div>
+                        <label for="price">Price</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)">
+                                
+                            </div>
+                        </div> 
                     </div>
-                </div>
 
                 <div class="row">
                     <div class="col-lg-6">
