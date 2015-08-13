@@ -60,7 +60,7 @@ $addPark->save();*/
             <? foreach($ads as $id => $ad): ?>
                  <div class="col-md-4">
                     <div class="thumbnail">
-                        <h3><?= $ad['title']; ?> - $<?= $ad['price']; ?></h3>
+                        <h2><?= $ad['title']; ?> - $<?= $ad['price']; ?></h2>
                             
                         <img class="img-thumbnail" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true" style="width: 200px; display: block;">
 
