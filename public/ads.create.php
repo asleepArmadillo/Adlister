@@ -1,5 +1,7 @@
 <?php
 
+var_dump($_POST);
+
 require_once 'ads.index.php';
 require_once '../bootstrap.php';
 
@@ -26,6 +28,17 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
 // Non-registered users must create an account 
 // first before they can create a new listing to sell.
 
+
+if($_FILES) {
+    $uploads_directory = 'img/';
+    $filename = $uploads_directory . basename($_FILES['somefile']['name']);
+    if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
+        echo '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
 ?>
 
 <html>
@@ -37,7 +50,7 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <? include "../views/partials/navbar.php"; ?>
+    <?// include "../views/partials/navbar.php"; ?>
 
 
     <div class="container main">
@@ -47,12 +60,12 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
             <h1>Create a New Listing</h1>
 
 
-            <form>
+            <form method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="InputInstrumentType">Instrument Type</label>
-                          <select class="form-control" id="InputInstrumentType">
+                          <label for="instrument_type">Instrument Type</label>
+                          <select class="form-control" id="instrument_type" name="instrument_type">
                             <option>Accordion</option>
                             <option>Brass</option>
                             <option>Guitar</option>
@@ -70,24 +83,24 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="InputBrand">Brand</label>
+                        <label for="brand">Brand</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="checkbox" aria-label="..." id="InputBrand">
+                                    <input type="checkbox" aria-label="..." id="brand">
                                 </span>
-                            <input type="text" class="form-control" aria-label="...">
+                            <input type="text" class="form-control" aria-label="..." id="brand" name="brand">
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="InputYear">Year</label>
+                        <label for="year">Year</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="checkbox" aria-label="..." id="InputYear">
+                                    <input type="checkbox" aria-label="..." id="year">
                                 </span>
-                            <input type="text" class="form-control" aria-label="...">
+                            <input type="text" class="form-control" aria-label="..."  id="year" name="year">
                     </div><!-- /input-group -->
                   </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
@@ -95,8 +108,8 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="InputCondition">Condition</label>
-                          <select class="form-control" id="InputCondition">
+                          <label for="item_condition">Condition</label>
+                          <select class="form-control" id="item_condition" name="item_condition">
                             <option>Not Specified</option>
                             <option>Excellent</option>
                             <option>Very Good</option>
@@ -113,8 +126,8 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="InputPrice">Price</label>
-                            <input type="email" class="form-control" id="InputPrice" placeholder="Email">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="Price">
                         </div>
                     </div>
                 </div>
@@ -122,8 +135,8 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="InputTitle">Title</label>
-                            <input type="email" class="form-control" id="InputTitle" placeholder="70 Character Maximum">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
                         </div>
                     </div>
                 </div>
@@ -131,16 +144,23 @@ if (Input::has('title') && Input::has('description') && Input::has('instrument_t
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label for="InputComment">Comment:</label>
-                    <textarea class="form-control" rows="5" id="InputComment" placeholder="50 Character Minimum"></textarea>
+                    <label for="description">Description</label>
+                    <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
                 </div>
             </div>
-        </div>         
+        </div>
 
-
-
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="image_url">Upload Image</label>
+                    <input type="file" name="somefile" id="image_url" name="image_url">
+                </div>
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
             
 
         </div>
