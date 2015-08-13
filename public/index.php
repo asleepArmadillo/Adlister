@@ -6,9 +6,7 @@ require_once '../bootstrap.php';
 $ads = [];
 
 $ads = Ad::all();
-// var_dump($ads);
 
-//$instrumentType = Ad::
 
 
 
