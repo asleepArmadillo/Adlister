@@ -61,14 +61,15 @@ class Input
     {
         $value = static::get($key); 
 
-        if (!isset($key)) {
+        if (!isset($value)) {
             throw new Exception('Input cannot be null.');
         } 
 
-        if (!is_numeric($key)) {
+        if (is_numeric($value)) {
+            return $value;
+        } else {
             throw new Exception('Input must be a number.');
         }
-        return $value;
     }
 
     public static function getDate($key) 
