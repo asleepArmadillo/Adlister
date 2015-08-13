@@ -15,6 +15,39 @@ class Ad extends Model
                                     ON L.user_id = U.id');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function count()
+    {
+        self::dbConnect();
+        return self::$dbc->query('SELECT count(*) FROM listings')->fetchColumn();
+    }
+
+    public static function pager($offset, $items_per_page)
+    {
+        self::dbConnect();
+        $stmt = self::$dbc->prepare('SELECT L.title, 
+                                    L.price, 
+                                    L.image_url, 
+                                    L.description, 
+                                    L.year, 
+                                    L.brand, 
+                                    L.item_condition, 
+                                    C.type, 
+                                    C.id, 
+                                    U.name
+                                    FROM listings AS L
+                                    LEFT JOIN categories AS C 
+                                    ON L.category_id = C.id
+                                    LEFT JOIN users AS U
+                                    ON L.user_id = U.id
+                                    LIMIT :offset, :items_per_page');
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->bindValue(':items_per_page', $items_per_page, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // find one by passing id
     public static function find($id)
     {
