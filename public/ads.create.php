@@ -20,7 +20,11 @@ if (Input::has('title') && Input::has('description')) {
     $ad->save();
 }
 
-//ONLY AFTER auth check, can a user create a listing - only registered users can create/edit/update/delete their own listings. Non-registered users must create an account first before they can create a new listing to sell.
+// ONLY AFTER auth check, can a user create a 
+// listing - only registered users can 
+// create/edit/update/delete their own listings. 
+// Non-registered users must create an account 
+// first before they can create a new listing to sell.
 
 ?>
 

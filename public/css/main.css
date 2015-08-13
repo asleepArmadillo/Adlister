@@ -8,6 +8,16 @@ body {
 	background-repeat: repeat;
 	padding-bottom: 40px;
 	color: #5a5a5a;
+    font-family: 'Quattrocento', serif;
+}
+h1 {
+    font-family: 'Oswald', serif;
+}
+h2 {
+    font-family: 'Oswald', serif;
+}
+h3 {
+    font-family: 'Oswald', serif;
 }
 
 .main {
