@@ -42,24 +42,71 @@ if (Input::has('title') && Input::has('description')) {
         <div class="loginFormFloat">
             <h1>Create a New Listing</h1>
 
-            
-
-
-
 
             <form>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="sel1">Instrument Type</label>
+                          <select class="form-control" id="sel1">
+                            <option>Accordion</option>
+                            <option>Brass</option>
+                            <option>Guitar</option>
+                            <option>Harmonica</option>
+                            <option>Percussion</option>
+                            <option>Piano / Keys</option>
+                            <option>String</option>
+                            <option>Woodwind</option>
+                            <option>Amplifier / Gear</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
-                  <div class="col-lg-6">
-                    <label for="InputEmailExisting">Instrument Type</label>
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                      </span>
-                      <input type="text" class="form-control" aria-label="...">
+                    <div class="col-lg-6">
+                        <label for="InputEmailExisting">Brand</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <input type="checkbox" aria-label="...">
+                                </span>
+                            <input type="text" class="form-control" aria-label="...">
                     </div><!-- /input-group -->
                   </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="InputEmailExisting">Year</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <input type="checkbox" aria-label="...">
+                                </span>
+                            <input type="text" class="form-control" aria-label="...">
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="sel1">Condition</label>
+                          <select class="form-control" id="sel1">
+                            <option>Accordion</option>
+                            <option>Brass</option>
+                            <option>Guitar</option>
+                            <option>Harmonica</option>
+                            <option>Percussion</option>
+                            <option>Piano / Keys</option>
+                            <option>String</option>
+                            <option>Woodwind</option>
+                            <option>Amplifier / Gear</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="InputEmailExisting">Instrument Type</label>
