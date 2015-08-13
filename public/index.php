@@ -34,6 +34,9 @@ $addPark->save();*/
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <!-- Top nav
