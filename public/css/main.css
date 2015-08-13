@@ -2,6 +2,41 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+@font-face {
+	font-family: 'Quattrocento';
+    src: url('../fonts/quattrocento/Quattrocento-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'Quattrocento';
+    src: url('../fonts/quattrocento/Quattrocento-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'Oswald';
+    src: url('../fonts/oswald/Oswald-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'Oswald';
+    src: url('../fonts/oswald/Oswald-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'Oswald';
+    src: url('../fonts/oswald/Oswald-Light.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
 
 body {
 	background-image: url("/img/retina_wood.png");
@@ -10,14 +45,21 @@ body {
 	color: #5a5a5a;
     font-family: 'Quattrocento', serif;
 }
+
 h1 {
     font-family: 'Oswald', serif;
+    font-weight: normal;
+    font-style: normal;
 }
+
 h2 {
     font-family: 'Oswald', serif;
+    font-weight: lighter;
 }
+
 h3 {
     font-family: 'Oswald', serif;
+    font-weight: bold;
 }
 
 .main {
@@ -106,6 +148,12 @@ h3 {
 
 .text-muted {
   margin: 20px 0;
+}
+
+/* CUSTOM THUMBNAIL
+-------------------------------------------------- */
+.thumbnail > h2 {
+	color: #d9534f;
 }
 
 

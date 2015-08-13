@@ -113,6 +113,17 @@ if($_FILES) {
 
 
             <form method="POST" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="title">Title</label><p class="error"><? if (isset($errors['title'])){ echo $errors['title'];};?></p>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
@@ -174,24 +185,17 @@ if($_FILES) {
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="Price">
-                        </div>
+                        <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                    <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)">
+                                
+                            </div>
+                        </div> 
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="title">Title</label><p class="error"><? if (isset($errors['title'])){ echo $errors['title'];};?></p>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
-                        </div>
-                    </div>
-                </div>
 
         <div class="row">
             <div class="col-lg-6">
@@ -210,6 +214,13 @@ if($_FILES) {
                 </div>
             </div>
         </div>
+<!-- =======
+                            <label for="image_url">Upload Image</label>
+                            <input type="file" name="somefile" id="image_url" name="image_url">
+                        </div>
+                    </div>
+                </div>
+>>>>>>> fb752fc79970f2c5634dcd0e3b87aed4c154c2d4 -->
     
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
