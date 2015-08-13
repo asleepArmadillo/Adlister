@@ -7,18 +7,31 @@ $ads = [];
 
 $ads = Ad::all();
 
+if(Input::has('page')) {
+    $page = Input::get('page');
+} else {
+    $page = 1;
+}
 
 
+$items_per_page = 4;
 
-/*$addPark = new Park ();
-$addPark->park = Input::getString('park');
-$addPark->location = Input::getString('location');
-$addPark->established = Input::getString('established');
-$addPark->area_in_acres = Input::getString('area_in_acres');
-$addPark->description = Input::getString('description');
-$addPark->save();*/
+$totalListings = Ad::count();
+$lastPage = ceil($totalListings / $items_per_page);
 
+if ($page > $lastPage) {
+    $page = $lastPage;
+}
+if ($page < 1) {
+    $page = 1;
+}
 
+$offset = ($page - 1) * $items_per_page;
+
+$ads = Ad::pager($offset, $items_per_page);
+
+$pageUp = $page + 1;
+$pageDown = $page - 1;
 
 ?>
 
@@ -69,7 +82,23 @@ $addPark->save();*/
                         <a href="show.php?id=<?= $id; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
-            <? endforeach; ?>  
+            <? endforeach; ?>
+            
+            <nav>
+                <ul class="pager">
+                    <? if ($totalListings >= $items_per_page) : ?>        
+                        <? if ($page > 1) : ?>
+                            <li class="previous"><a href="?page=1" class="btn btn-default">First Page</a></li>
+                            <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
+                        <? endif; ?>
+                        <? if ($page < $lastPage) : ?>
+                            <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
+                            <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
+                        <? endif; ?>
+                    <? endif; ?>
+                </ul>
+            </nav>
+
         </div>
 
 
