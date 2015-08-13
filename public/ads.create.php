@@ -7,7 +7,7 @@ $ads = [];
 
 $ads = Ad::all();
 
-if (Input::has('title') && Input::has('description')) {
+if (Input::has('title') && Input::has('description') && Input::has('instrument_type') && Input::has('condition') && Input::has('price')) {
     $ad = new Ad();
     $ad->type = Input::get('instrument_type');
     $ad->brand = Input::get('brand');
@@ -47,8 +47,8 @@ if (Input::has('title') && Input::has('description')) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="sel1">Instrument Type</label>
-                          <select class="form-control" id="sel1">
+                          <label for="InputInstrumentType">Instrument Type</label>
+                          <select class="form-control" id="InputInstrumentType">
                             <option>Accordion</option>
                             <option>Brass</option>
                             <option>Guitar</option>
@@ -66,22 +66,22 @@ if (Input::has('title') && Input::has('description')) {
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="InputEmailExisting">Brand</label>
+                        <label for="InputBrand">Brand</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="checkbox" aria-label="...">
+                                    <input type="checkbox" aria-label="..." id="InputBrand">
                                 </span>
                             <input type="text" class="form-control" aria-label="...">
-                    </div><!-- /input-group -->
-                  </div><!-- /.col-lg-6 -->
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="InputEmailExisting">Year</label>
+                        <label for="InputYear">Year</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="checkbox" aria-label="...">
+                                    <input type="checkbox" aria-label="..." id="InputYear">
                                 </span>
                             <input type="text" class="form-control" aria-label="...">
                     </div><!-- /input-group -->
@@ -91,76 +91,47 @@ if (Input::has('title') && Input::has('description')) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="sel1">Condition</label>
-                          <select class="form-control" id="sel1">
-                            <option>Accordion</option>
-                            <option>Brass</option>
-                            <option>Guitar</option>
-                            <option>Harmonica</option>
-                            <option>Percussion</option>
-                            <option>Piano / Keys</option>
-                            <option>String</option>
-                            <option>Woodwind</option>
-                            <option>Amplifier / Gear</option>
-                            <option>Other</option>
+                          <label for="InputCondition">Condition</label>
+                          <select class="form-control" id="InputCondition">
+                            <option>Not Specified</option>
+                            <option>Excellent</option>
+                            <option>Very Good</option>
+                            <option>Good</option>
+                            <option>Poor</option>
+                            <option>New</option>
+                            <option>Refurbished</option>
+                            <option>For Parts / Not Working</option>
                           </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="InputEmailExisting">Instrument Type</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="InputPrice">Price</label>
+                            <input type="email" class="form-control" id="InputPrice" placeholder="Email">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Select Instrument Type
-                        <span class="caret"></span>
-                    </button>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Accordion</a></li>
-                    <li><a href="#">Brass</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    </ul>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="InputTitle">Title</label>
+                            <input type="email" class="form-control" id="InputTitle" placeholder="70 Character Maximum">
+                        </div>
+                    </div>
                 </div>
 
-
-
-
-
-
-
+        <div class="row">
+            <div class="col-lg-6">
                 <div class="form-group">
-                    <label for="InputEmailExisting">Brand</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
+                    <label for="InputComment">Comment:</label>
+                    <textarea class="form-control" rows="5" id="InputComment" placeholder="50 Character Minimum"></textarea>
                 </div>
-
-                <div class="form-group">
-                    <label for="InputEmailExisting">Year</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputEmailExisting">Condition</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputEmailExisting">Price</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
-                </div>   
-
-                <div class="form-group">
-                    <label for="InputEmailExisting">Title</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <label for="InputEmailExisting">Description</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
-                </div>                
+            </div>
+        </div>         
 
 
 
