@@ -1,6 +1,7 @@
 <?php
 
 // var_dump($_POST);
+var_dump($_FILES);
 
 require_once 'ads.index.php';
 require_once '../bootstrap.php';
@@ -45,7 +46,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
     }
 
     try {
-        $ad->price = Input::get('price');
+        $ad->price = Input::getNumber('price');
     } catch (Exception $e) {
         $errors['price'] = "An error occurred: " . $e->getMessage();
     }
@@ -56,8 +57,19 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
         $errors['description'] = "An error occurred: " . $e->getMessage();
     }
 
+    if($_FILES) {
+        $uploads_directory = '/img/';
+
+        $filename = $uploads_directory . basename($_FILES['somefile']['name']);
+        if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
+            $image_status = '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
+        } else {
+            $image_status = "Sorry, there was an error uploading your file.";
+        }
+    }
+
     try {
-        $ad->image_url = Input::getString('image_url');
+        $ad->image_url = $filename;
     } catch (Exception $e) {
         $errors['image_url'] = "An error occurred: " . $e->getMessage();
     }
@@ -81,15 +93,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 // first before they can create a new listing to sell.
 
 
-if($_FILES) {
-    $uploads_directory = 'img/';
-    $filename = $uploads_directory . basename($_FILES['somefile']['name']);
-    if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
-        $image_status = '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
-    } else {
-        $image_status = "Sorry, there was an error uploading your file.";
-    }
-}
+
 
 ?>
 
@@ -102,7 +106,7 @@ if($_FILES) {
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <?// include "../views/partials/navbar.php"; ?>
+    <? include "../views/partials/navbar.php"; ?>
 
 
     <div class="container main">
