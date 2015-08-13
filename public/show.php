@@ -7,7 +7,11 @@ $ads = [];
 
 $ads = Ad::all();
 
-$id = Input::get('id');
+if (Input::has('id')) {
+    $id = Input::get('id');
+} else {
+    $id = 0;
+}
 
 ?>
 
@@ -35,10 +39,9 @@ $id = Input::get('id');
 
             <img src="<?= $ads[$id]['image_url']; ?>" class="pull-right">
 
-
             <h3>Details:</h3>
             <ul class="list-unstyled">
-                <li>Instrument Type: <?= $ads[$id]['category_id']; ?></li>
+                <li>Instrument Type: <?= $ads[$id]['type']; ?></li>
                 <li>Brand: <?= $ads[$id]['brand']; ?></li>
                 <li>Year: <?= $ads[$id]['year']; ?></li>
                 <li>Condition: <?= $ads[$id]['item_condition']; ?></li>
