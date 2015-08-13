@@ -1,25 +1,77 @@
 <?php
 
-var_dump($_POST);
+// var_dump($_POST);
 
 require_once 'ads.index.php';
 require_once '../bootstrap.php';
 
 $ads = [];
 
+$errors =   [];
+
 $ads = Ad::all();
 
-if (Input::has('title') && Input::has('description') && Input::has('instrument_type') && Input::has('condition') && Input::has('price')) {
+if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(Input::get('instrument_type')) && !empty(Input::get('item_condition')) && !empty(Input::get('price'))) {
     $ad = new Ad();
-    $ad->type = Input::get('instrument_type');
-    $ad->brand = Input::get('brand');
-    $ad->year = Input::get('year');
-    $ad->condition = Input::get('condition');
-    $ad->title = Input::get('title');
-    $ad->price = Input::get('price');
-    $ad->description = Input::get('description');
-    $ad->image_url = Input::get('image_url');
-    $ad->save();
+
+    try {
+        $ad->type = Input::getString('instrument_type');
+    } catch (Exception $e) {
+        $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->brand = Input::getString('brand');
+    } catch (Exception $e) {
+        $errors['brand'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->year = Input::getNumber('year');
+    } catch (Exception $e) {
+        $errors['year'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->item_condition = Input::getString('item_condition');
+    } catch (Exception $e) {
+        $errors['item_condition'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->title = Input::getString('title');
+    } catch (Exception $e) {
+        $errors['title'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->price = Input::get('price');
+    } catch (Exception $e) {
+        $errors['price'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->description = Input::getString('description');
+    } catch (Exception $e) {
+        $errors['description'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $ad->image_url = Input::getString('image_url');
+    } catch (Exception $e) {
+        $errors['image_url'] = "An error occurred: " . $e->getMessage();
+    }
+
+
+    $ad->date_posted = date('Y-m-d');
+    $ad->category_id = 1;
+    $ad->user_id = 1;
+    // var_dump($ad);
+    // var_dump($errors);
+
+    if (empty($errors)) {
+        $ad->save();
+    }
 }
 
 // ONLY AFTER auth check, can a user create a 
@@ -33,9 +85,9 @@ if($_FILES) {
     $uploads_directory = 'img/';
     $filename = $uploads_directory . basename($_FILES['somefile']['name']);
     if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
-        echo '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
+        $image_status = '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        $image_status = "Sorry, there was an error uploading your file.";
     }
 }
 
@@ -65,7 +117,7 @@ if($_FILES) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="title">Title</label>
+                            <label for="title">Title</label><p class="error"><? if (isset($errors['title'])){ echo $errors['title'];};?></p>
                             <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
                         </div>
                     </div>
@@ -75,7 +127,7 @@ if($_FILES) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="instrument_type">Instrument Type</label>
+                          <label for="instrument_type">Instrument Type</label><p class="error"><? if (isset($errors['instrument_type'])){ echo $errors['instrument_type'];;};?></p>
                           <select class="form-control" id="instrument_type" name="instrument_type">
                             <option>Accordion</option>
                             <option>Brass</option>
@@ -94,7 +146,7 @@ if($_FILES) {
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="brand">Brand</label>
+                        <label for="brand">Brand</label><p class="error"><? if (isset($errors['brand'])){ echo $errors['brand'];};?></p>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <input type="checkbox" aria-label="..." id="brand">
@@ -106,7 +158,7 @@ if($_FILES) {
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="year">Year</label>
+                        <label for="year">Year</label><p class="error"><? if (isset($errors['year'])){ echo $errors['year'];};?></p>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <input type="checkbox" aria-label="..." id="year">
@@ -119,7 +171,7 @@ if($_FILES) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="item_condition">Condition</label>
+                          <label for="item_condition">Condition</label><p class="error"><? if (isset($errors['item_condition'])){ echo $errors['item_condition'];};?></p>
                           <select class="form-control" id="item_condition" name="item_condition">
                             <option>Not Specified</option>
                             <option>Excellent</option>
@@ -136,7 +188,7 @@ if($_FILES) {
                 
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="price">Price</label>
+                        <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
                                     <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)">
@@ -145,23 +197,30 @@ if($_FILES) {
                         </div> 
                     </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="description">Description</label><p class="error"><? if (isset($errors['description'])){ echo $errors['description'];};?></p>
+                    <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
                 </div>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="image_url">Upload Image</label><p class="error"><? if (isset($image_status)){ echo $image_status;};?></p>
+                    <input type="file" name="somefile" id="image_url" name="image_url">
+                </div>
+            </div>
+        </div>
+<!-- =======
                             <label for="image_url">Upload Image</label>
                             <input type="file" name="somefile" id="image_url" name="image_url">
                         </div>
                     </div>
                 </div>
+>>>>>>> fb752fc79970f2c5634dcd0e3b87aed4c154c2d4 -->
     
         <button type="submit" class="btn btn-success">Submit</button>
     </form>

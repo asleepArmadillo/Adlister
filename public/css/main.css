@@ -65,6 +65,11 @@ h3 {
 .main {
 	margin-top: 8rem;
 }
+.error {
+    color: red;
+    font-family: 'Oswald', serif;
+    font-size: 2em;
+}
 
 
 
