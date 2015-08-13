@@ -55,9 +55,9 @@ $addPark->save();*/
         <? include "../views/partials/sidebar.php"; ?>
         
         <div class="row">
-
+            
             <? foreach($ads as $id => $ad): ?>
-                 <div class="col-sm-6 col-md-4">
+                 <div class="col-md-4">
                     <div class="thumbnail">
                         <h3><?= $ad['title']; ?> - $<?= $ad['price']; ?></h3>
                             
@@ -70,6 +70,7 @@ $addPark->save();*/
                     </div>
                 </div>
             <? endforeach; ?>
+            
         </div>
     </div>
 
