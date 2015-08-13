@@ -35,7 +35,7 @@ if (Input::has('id')) {
 
         <div class="row">
 
-            <h2><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h2>
+            <h1><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h1>
 
             <img src="<?= $ads[$id]['image_url']; ?>" class="pull-right">
 

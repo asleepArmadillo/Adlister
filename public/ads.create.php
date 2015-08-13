@@ -61,6 +61,17 @@ if($_FILES) {
 
 
             <form method="POST" enctype="multipart/form-data">
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
+                        </div>
+                    </div>
+                </div>
+
+                
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
@@ -135,29 +146,20 @@ if($_FILES) {
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
                         </div>
                     </div>
                 </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="image_url">Upload Image</label>
+                            <input type="file" name="somefile" id="image_url" name="image_url">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="image_url">Upload Image</label>
-                    <input type="file" name="somefile" id="image_url" name="image_url">
-                </div>
-            </div>
-        </div>
     
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
