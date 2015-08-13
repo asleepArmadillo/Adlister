@@ -56,13 +56,12 @@ $addPark->save();*/
         <? include "../views/partials/sidebar.php"; ?>
         
         <div class="row">
-            
             <? foreach($ads as $id => $ad): ?>
-                 <div class="col-md-4">
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
                     <div class="thumbnail">
                         <h2><?= $ad['title']; ?> - $<?= $ad['price']; ?></h2>
                             
-                        <img class="img-thumbnail" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true" style="width: 200px; display: block;">
+                        <img class="img-thumbnail img-responsive" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true">
 
                         <p><?= $ad['type']; ?></p>
                         <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p> 
@@ -70,9 +69,10 @@ $addPark->save();*/
                         <a href="show.php?id=<?= $id; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
-            <? endforeach; ?>
-            
+            <? endforeach; ?>  
         </div>
+
+
     </div>
 
 
