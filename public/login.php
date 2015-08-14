@@ -27,12 +27,7 @@ if (!empty($_POST))
         } catch (Exception $e) {
             $errors['name'] = "An error occurred: " . $e->getMessage();
         }
-<<<<<<< HEAD
 
-=======
-    } else {
-        $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
->>>>>>> bd0b80503dff53b1c4099863cebaa7c7eb890720
         try {
             $user->email = Input::getString('email');
         } catch (Exception $e) {
@@ -112,11 +107,10 @@ extract(pageController());
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-formhelpers.css">
 </head>
 <body>
-    <?// include "../views/partials/navbar.php"; ?>
+    <? include "../views/partials/navbar.php"; ?>
 
 
     <div class="container main">
-
 
         <div class="loginFormFloat">
             <h1>Log In or Create Account</h1>
@@ -177,6 +171,8 @@ extract(pageController());
 
 
     <? include "../views/partials/footer.php"; ?>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <script type="text/javascript">
