@@ -12,65 +12,69 @@ $users = User::all();
 $pass1 = '';
 $pass2 = '';
 
-// var_dump($_POST);
 
-
-
-//if $pass1 == $pass2, then set $pass2 as password on insert 
-
-if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
+if (!empty($_POST)) 
 {
-    $user = new User();
-    $pass1 = Input::getString('password1');
-    $pass2 = Input::getString('password');
 
-    try {
-        $user->name = Input::getString('name');
-    } catch (Exception $e) {
-        $errors['name'] = "An error occurred: " . $e->getMessage();
-    }
+    if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
+    {
+        $user = new User();
+        $pass1 = Input::getString('password1');
+        $pass2 = Input::getString('password');
 
-    try {
-        $user->email = Input::getString('email');
-    } catch (Exception $e) {
-        $errors['email'] = "An error occurred: " . $e->getMessage();
-    } 
-
-    if (Input::getString('phone') == '') {
-        $phone = null;
         try {
-            $user->phone = $phone;
+            $user->name = Input::getString('name');
         } catch (Exception $e) {
-            $errors['phone'] = "An error occurred: " . $e->getMessage();
+            $errors['name'] = "An error occurred: " . $e->getMessage();
         }
+<<<<<<< HEAD
+
+=======
     } else {
         $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
+>>>>>>> bd0b80503dff53b1c4099863cebaa7c7eb890720
         try {
-            $user->phone = $phone;
+            $user->email = Input::getString('email');
         } catch (Exception $e) {
-            $errors['phone'] = "An error occurred: " . $e->getMessage();
-        }
-    }
+            $errors['email'] = "An error occurred: " . $e->getMessage();
+        } 
 
-    if ($pass1 == $pass2) {
-        try {
-            $passToHash = Input::getString('password');
-            $user->password = password_hash($passToHash, PASSWORD_DEFAULT);
-        } catch (Exception $e) {
-            $errors['password'] = "An error occurred: " . $e->getMessage();
+        if (Input::getString('phone') == '') {
+            $phone = null;
+            try {
+                $user->phone = $phone;
+            } catch (Exception $e) {
+                $errors['phone'] = "An error occurred: " . $e->getMessage();
+            }
+        } else {
+            $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
+            var_dump($phone);
+            try {
+                $user->phone = $phone;
+            } catch (Exception $e) {
+                $errors['phone'] = "An error occurred: " . $e->getMessage();
+            }
         }
+
+        if ($pass1 == $pass2) {
+            try {
+                $passToHash = Input::getString('password');
+                $user->password = password_hash($passToHash, PASSWORD_DEFAULT);
+            } catch (Exception $e) {
+                $errors['password'] = "An error occurred: " . $e->getMessage();
+            }
+        } else {
+            $errors['password'] = "Passwords don't match!";
+        }  
+
+        if (empty($errors)) {
+            $user->save();
+        } 
+        
     } else {
-        $errors['password'] = "Passwords don't match!";
-    }  
-
-    if (empty($errors)) {
-        $user->save();
-    } 
-    
-} else {
-    $errors['name'] = "Please complete ALL FIELDS!";
+        $errors['name'] = "Please complete ALL FIELDS!";
+    }
 }
-
 
 
 //this is for existing user login
