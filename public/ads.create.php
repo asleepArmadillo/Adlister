@@ -89,6 +89,8 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 
     if (empty($errors)) {
         $ad->save();
+        header("Location: success.php");
+        exit();
     }
 }
 
@@ -177,17 +179,17 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="item_condition">Condition</label><p class="error"><? if (isset($errors['item_condition'])){ echo $errors['item_condition'];};?></p>
-                          <select class="form-control" id="item_condition" name="item_condition">
-                            <option>Not Specified</option>
-                            <option>Excellent</option>
-                            <option>Very Good</option>
-                            <option>Good</option>
-                            <option>Poor</option>
-                            <option>New</option>
-                            <option>Refurbished</option>
-                            <option>For Parts / Not Working</option>
-                          </select>
+                            <label for="item_condition">Condition</label><p class="error"><? if (isset($errors['item_condition'])){ echo $errors['item_condition'];};?></p>
+                            <select class="form-control" id="item_condition" name="item_condition">
+                                <option>Not Specified</option>
+                                <option>Excellent</option>
+                                <option>Very Good</option>
+                                <option>Good</option>
+                                <option>Poor</option>
+                                <option>New</option>
+                                <option>Refurbished</option>
+                                <option>For Parts / Not Working</option>
+                            </select>
                         </div>
                     </div>
                 </div>

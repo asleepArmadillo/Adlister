@@ -85,20 +85,20 @@ $pageDown = $page - 1;
             <? endforeach; ?>
         </div>
     </div>
-        <nav>
-            <ul class="pager">
-                <? if ($totalListings >= $items_per_page) : ?>        
-                    <? if ($page > 1) : ?>
-                        <li class="previous"><a href="?page=1" class="btn btn-default">First Page</a></li>
-                        <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
-                    <? endif; ?>
-                    <? if ($page < $lastPage) : ?>
-                        <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
-                        <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
-                    <? endif; ?>
+    <nav>
+        <ul class="pager">
+            <? if ($totalListings >= $items_per_page) : ?>        
+                <? if ($page > 1) : ?>
+                    <li class="previous"><a href="?page=1" class="btn btn-default">First Page</a></li>
+                    <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
                 <? endif; ?>
-            </ul>
-        </nav>
+                <? if ($page < $lastPage) : ?>
+                    <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
+                    <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
+                <? endif; ?>
+            <? endif; ?>
+        </ul>
+    </nav>
 
 
 

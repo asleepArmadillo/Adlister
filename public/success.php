@@ -4,6 +4,13 @@ if (!Auth::check()) {
     header("Location: login.php");
     exit();
 }
+
+$listing = Ad::count() - 1;
+var_dump($listing);
+
+
+header("Refresh: 3;url=show.php?id=$listing");
+
 ?>
 
 <html>
@@ -15,13 +22,14 @@ if (!Auth::check()) {
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <? include "../views/partials/navbar.php"; ?>
+    <?// include "../views/partials/navbar.php"; ?>
 
 
     <div class="container main">
 
 
     <h1>Your listing has been created successfully!</h1>
+    <h2>We're headed there now...</h2>
             
 
   
@@ -36,4 +44,4 @@ if (!Auth::check()) {
     <script src="js/bootstrap.min.js"></script>
 
 </body>
-</html>s
+</html>
