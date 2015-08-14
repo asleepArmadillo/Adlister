@@ -1,14 +1,13 @@
 <?php
+session_start();
 
 require_once '../bootstrap.php';
 
+//this is for new user create
 $pass1 = '';
 $pass2 = '';
 
 //if $pass1 == $pass2, then set $pass2 as password on insert 
-
-
-
 
 if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('phone') && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
 {
@@ -31,11 +30,35 @@ if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::g
     } catch (Exception $e) {
         $errors['phone'] = "An error occurred: " . $e->getMessage();
     }    
-
-     
+    
 
     $user->save();
 }
+
+
+
+//this is for existing user login
+$data = User::findUserByEmail('josh@example.com');
+        var_dump($data);
+
+if (isset($_SESSION['LOGGED_IN_USER'])) {
+    header("Location: auth.login.php");
+    exit();
+}
+
+function pageController(){
+    $data = [];
+    $data['location'] = 'login.php';
+
+    $password = Input::get('password');
+    $userName = Input::get('user');
+
+    Auth::attempt($userName, $password);
+
+    return $data;
+}
+
+extract(pageController());
 
 ?>
 
@@ -58,22 +81,22 @@ if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::g
             <h1>Log In or Create Account</h1>
         
                 <h2>Login for Existing Users</h2>
-                <form>
+                <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="InputEmailExisting">Email address</label>
-                    <input type="email" class="form-control" id="InputEmailExisting" placeholder="Email">
+                    <input type="email" class="form-control" name="user" id="InputEmailExisting" placeholder="Email">
                     </div>
 
                     <div class="form-group">
                     <label for="InputPasswordExisting">Password</label>
-                    <input type="password" class="form-control" id="InputPasswordExisting" placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="InputPasswordExisting" placeholder="Password">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
         
                 <h2>Signup for New Users</h2>
-                <form>
+                <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="name">Your Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
