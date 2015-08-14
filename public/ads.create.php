@@ -1,13 +1,18 @@
 <?php
 // var_dump($_POST);
-var_dump($_FILES);
+// var_dump($_FILES);
 
 require_once 'ads.index.php';
 require_once '../bootstrap.php';
 
+if (!Auth::check()) {
+    header("Location: login.php");
+    exit();
+}
+
 $ads = [];
 
-$errors =   [];
+$errors = [];
 
 $ads = Ad::all();
 
@@ -55,15 +60,17 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
     } catch (Exception $e) {
         $errors['description'] = "An error occurred: " . $e->getMessage();
     }
-
-    if($_FILES) {
-        $uploads_directory = '/img/';
-
-        $filename = $uploads_directory . basename($_FILES['somefile']['name']);
-        if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
-            $image_status = '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
-        } else {
-            $image_status = "Sorry, there was an error uploading your file.";
+    if($_FILES['somefile']['name'] == '') {
+        $filename = null;
+    } else {
+        if($_FILES) {
+            $uploads_directory = '/img/';
+            $filename = $uploads_directory . basename($_FILES['somefile']['name']);
+            if (move_uploaded_file($_FILES['somefile']['tmp_name'], $filename)) {
+                $image_status = '<p>The file '. basename( $_FILES['somefile']['name']). ' has been uploaded.</p>';
+            } else {
+                $image_status = "Sorry, there was an error uploading your file.";
+            }
         }
     }
 
@@ -107,13 +114,10 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 <body>
     <? include "../views/partials/navbar.php"; ?>
 
-
     <div class="container main">
-
 
         <div class="loginFormFloat">
             <h1>Create a New Listing</h1>
-
 
             <form method="POST" enctype="multipart/form-data">
 
@@ -126,23 +130,22 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                     </div>
                 </div>
 
-
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                          <label for="instrument_type">Instrument Type</label><p class="error"><? if (isset($errors['instrument_type'])){ echo $errors['instrument_type'];;};?></p>
-                          <select class="form-control" id="instrument_type" name="instrument_type">
-                            <option>Accordion</option>
-                            <option>Brass</option>
-                            <option>Guitar</option>
-                            <option>Harmonica</option>
-                            <option>Percussion</option>
-                            <option>Piano / Keys</option>
-                            <option>String</option>
-                            <option>Woodwind</option>
-                            <option>Amplifier / Gear</option>
-                            <option>Other</option>
-                          </select>
+                            <label for="instrument_type">Instrument Type</label><p class="error"><? if (isset($errors['instrument_type'])){ echo $errors['instrument_type'];;};?></p>
+                            <select class="form-control" id="instrument_type" name="instrument_type">
+                                <option>Accordion</option>
+                                <option>Brass</option>
+                                <option>Guitar</option>
+                                <option>Harmonica</option>
+                                <option>Percussion</option>
+                                <option>Piano / Keys</option>
+                                <option>String</option>
+                                <option>Woodwind</option>
+                                <option>Amplifier / Gear</option>
+                                <option>Other</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -150,10 +153,10 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="brand">Brand</label><p class="error"><? if (isset($errors['brand'])){ echo $errors['brand'];};?></p>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <input type="checkbox" aria-label="..." id="brand">
-                                </span>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="brand">
+                            </span>
                             <input type="text" class="form-control" aria-label="..." id="brand" name="brand">
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -162,13 +165,13 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="year">Year</label><p class="error"><? if (isset($errors['year'])){ echo $errors['year'];};?></p>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <input type="checkbox" aria-label="..." id="year">
-                                </span>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" aria-label="..." id="year">
+                            </span>
                             <input type="text" class="form-control" aria-label="..."  id="year" name="year">
-                    </div><!-- /input-group -->
-                  </div><!-- /.col-lg-6 -->
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
 
                 <div class="row">
@@ -192,45 +195,33 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                    <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)">
-                                
-                            </div>
-                        </div> 
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)">
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="description">Description</label><p class="error"><? if (isset($errors['description'])){ echo $errors['description'];};?></p>
+                            <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
+                        </div>
                     </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="description">Description</label><p class="error"><? if (isset($errors['description'])){ echo $errors['description'];};?></p>
-                    <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="image_url">Upload Image</label><p class="error"><? if (isset($image_status)){ echo $image_status;};?></p>
-                    <input type="file" name="somefile" id="image_url" name="image_url">
-                </div>
-            </div>
-        </div>
-<!-- =======
-                            <label for="image_url">Upload Image</label>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="image_url">Upload Image</label><p class="error"><? if (isset($image_status)){ echo $image_status;};?></p>
                             <input type="file" name="somefile" id="image_url" name="image_url">
                         </div>
                     </div>
                 </div>
->>>>>>> fb752fc79970f2c5634dcd0e3b87aed4c154c2d4 -->
-    
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-            
-
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
         </div>
-
     </div>
 
 
@@ -241,4 +232,4 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
     <script src="js/bootstrap.min.js"></script>
 
 </body>
-</html>s
+</html>
