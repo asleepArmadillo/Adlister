@@ -3,20 +3,20 @@ USE adlister_db;
 DROP TABLE IF EXISTS categories;
 
 CREATE TABLE categories (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    category_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     type VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (category_id)
 );
 
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password VARCHAR(255) NOT NULL,
     phone BIGINT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (user_id)
 );
 
 -- drop foreign keys first
@@ -34,7 +34,7 @@ CREATE TABLE listings (
     price FLOAT(13,2) NOT NULL,
     image_url VARCHAR(100),
     description TEXT NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES categories (id),
-    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (category_id) REFERENCES categories (category_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
     PRIMARY KEY (id)
 );
