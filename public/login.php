@@ -4,14 +4,24 @@ session_start();
 require_once '../bootstrap.php';
 
 //this is for new user create
+$users = [];
+
+$errors = [];
+
+$users = User::all();
+
 $pass1 = '';
 $pass2 = '';
 
+
+
 //if $pass1 == $pass2, then set $pass2 as password on insert 
 
-if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('phone') && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
+if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
 {
     $user = new User();
+    $pass1 = Input::getString('password1');
+    $pass2 = Input::getString('password');
 
     try {
         $user->name = Input::getString('name');
@@ -25,22 +35,43 @@ if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::g
         $errors['email'] = "An error occurred: " . $e->getMessage();
     } 
 
-    try {
-        $user->phone = Input::getString('phone');
-    } catch (Exception $e) {
-        $errors['phone'] = "An error occurred: " . $e->getMessage();
-    }    
-    
+    if (Input::getString('phone') == '') {
+        $phone = null;
+        try {
+            $user->phone = $phone;
+        } catch (Exception $e) {
+            $errors['phone'] = "An error occurred: " . $e->getMessage();
+        }
+    } else {
+        try {
+            $user->phone = Input::getNumber('phone');
+        } catch (Exception $e) {
+            $errors['phone'] = "An error occurred: " . $e->getMessage();
+        }
+    }
 
-    $user->save();
+    if ($pass1 == $pass2) {
+        try {
+            $passToHash = Input::getString('password');
+            $user->password = password_hash($passToHash, PASSWORD_DEFAULT);
+        } catch (Exception $e) {
+            $errors['password'] = "An error occurred: " . $e->getMessage();
+        }
+    } else {
+        $errors['password'] = "Passwords don't match!";
+    }  
+
+    if (empty($errors)) {
+        $user->save();
+    } 
+    
+} else {
+    $errors['name'] = "Please complete ALL FIELDS!";
 }
 
 
 
 //this is for existing user login
-$data = User::findUserByEmail('josh@example.com');
-        var_dump($data);
-
 if (isset($_SESSION['LOGGED_IN_USER'])) {
     header("Location: auth.login.php");
     exit();
@@ -98,29 +129,29 @@ extract(pageController());
                 <h2>Signup for New Users</h2>
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                    <label for="name">Your Name</label>
+                    <label for="name">Your Name</label><p class="error"><? if (isset($errors['name'])){ echo $errors['name'];};?></p>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
                     </div>
 
 
                     <div class="form-group">
-                    <label for="EmailNew">Email address</label>
+                    <label for="EmailNew">Email address</label><p class="error"><? if (isset($errors['email'])){ echo $errors['email'];};?></p>
                     <input type="email" class="form-control" id="EmailNew" name="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
-                    <label for="phone">Phone Number</label>
+                    <label for="phone">Phone Number</label><p class="error"><? if (isset($errors['phone'])){ echo $errors['phone'];};?></p>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Email">
                     </div>
 
 
                     <div class="form-group">
-                    <label for="PasswordNew">Password</label>
+                    <label for="PasswordNew">Password</label><p class="error"><? if (isset($errors['password'])){ echo $errors['password'];};?></p>
                     <input type="password" class="form-control" id="PasswordNew" name="password1" placeholder="Password">
                     </div>
 
                     <div class="form-group">
-                    <label for="RetypePasswordNew">Retype Password</label>
+                    <label for="RetypePasswordNew">Retype Password</label><p class="error"><? if (isset($errors['password'])){ echo $errors['password'];};?></p>
                     <input type="password" class="form-control" id="RetypePasswordNew" name="password" placeholder="Password">
                     </div>
 
