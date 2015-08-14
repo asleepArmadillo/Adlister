@@ -5,7 +5,7 @@ require_once '../bootstrap.php';
 
 $ads = [];
 
-$ads = Ad::all();
+// $ads = Ad::all();
 
 if(Input::has('page')) {
     $page = Input::get('page');
@@ -29,7 +29,7 @@ if ($page < 1) {
 $offset = ($page - 1) * $items_per_page;
 
 $ads = Ad::pager($offset, $items_per_page);
-
+// var_dump($ads);
 $pageUp = $page + 1;
 $pageDown = $page - 1;
 
@@ -70,8 +70,7 @@ $pageDown = $page - 1;
                 <!-- This include is for sidebar navigation -->
                 <? include "../views/partials/sidebar.php"; ?>
             </div>
-        <!--/div>
-            <div class="col-xs-12 col-sm-8 col-md-8 thumbnail-group"-->
+        
             <? foreach($ads as $id => $ad): ?>
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="thumbnail">
@@ -79,8 +78,9 @@ $pageDown = $page - 1;
                         <a href="show.php?id=<?= $id; ?>"><img class="img-responsive" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true"></a>
                         <p><?= $ad['type']; ?></p>
                         <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p> 
-                        <!--p>Posted by: <//?= $ad['name']?></p-->
-                        <a href="show.php?id=<?= $id; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                        <!--p>Posted by: <?//= $ad['name']?></p-->
+                        <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
             <? endforeach; ?>

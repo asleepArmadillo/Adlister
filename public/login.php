@@ -1,7 +1,41 @@
 <?php
 
+require_once '../bootstrap.php';
+
+$pass1 = '';
+$pass2 = '';
+
+//if $pass1 == $pass2, then set $pass2 as password on insert 
 
 
+
+
+if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('phone') && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
+{
+    $user = new User();
+
+    try {
+        $user->name = Input::getString('name');
+    } catch (Exception $e) {
+        $errors['name'] = "An error occurred: " . $e->getMessage();
+    }
+
+    try {
+        $user->email = Input::getString('email');
+    } catch (Exception $e) {
+        $errors['email'] = "An error occurred: " . $e->getMessage();
+    } 
+
+    try {
+        $user->phone = Input::getString('phone');
+    } catch (Exception $e) {
+        $errors['phone'] = "An error occurred: " . $e->getMessage();
+    }    
+
+     
+
+    $user->save();
+}
 
 ?>
 
@@ -40,16 +74,34 @@
         
                 <h2>Signup for New Users</h2>
                 <form>
-                    
                     <div class="form-group">
-                    <label for="InputEmailNew">Email address</label>
-                    <input type="email" class="form-control" id="InputEmailNew" placeholder="Email">
+                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                    </div>
+
+
+                    <div class="form-group">
+                    <label for="EmailNew">Email address</label>
+                    <input type="email" class="form-control" id="EmailNew" name="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
-                    <label for="InputPasswordExisting">Password</label>
-                    <input type="password" class="form-control" id="InputPasswordExisting" placeholder="Password">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Email">
                     </div>
+
+
+                    <div class="form-group">
+                    <label for="PasswordNew">Password</label>
+                    <input type="password" class="form-control" id="PasswordNew" name="password1" placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                    <label for="RetypePasswordNew">Retype Password</label>
+                    <input type="password" class="form-control" id="RetypePasswordNew" name="password" placeholder="Password">
+                    </div>
+
+                    
 
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
