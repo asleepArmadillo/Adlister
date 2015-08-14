@@ -7,12 +7,22 @@ class Ad extends Model
     public static function all()
     {
         self::dbConnect();
-        $stmt = self::$dbc->query('SELECT L.title, L.price, L.image_url, L.description, L.year, L.brand, L.item_condition, C.type, C.id, U.name
+        $stmt = self::$dbc->query('SELECT L.title, 
+                                    L.price, 
+                                    L.image_url, 
+                                    L.description, 
+                                    L.year, 
+                                    L.brand, 
+                                    L.item_condition, 
+                                    L.id,
+                                    C.type, 
+                                    C.category_id, 
+                                    U.name
                                     FROM listings AS L
                                     LEFT JOIN categories AS C 
-                                    ON L.category_id = C.id
+                                    ON L.category_id = C.category_id
                                     LEFT JOIN users AS U
-                                    ON L.user_id = U.id');
+                                    ON L.user_id = U.user_id');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -32,14 +42,15 @@ class Ad extends Model
                                     L.year, 
                                     L.brand, 
                                     L.item_condition, 
+                                    L.id,
                                     C.type, 
-                                    C.id, 
+                                    C.category_id, 
                                     U.name
                                     FROM listings AS L
                                     LEFT JOIN categories AS C 
-                                    ON L.category_id = C.id
+                                    ON L.category_id = C.category_id
                                     LEFT JOIN users AS U
-                                    ON L.user_id = U.id
+                                    ON L.user_id = U.user_id
                                     LIMIT :offset, :items_per_page');
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->bindValue(':items_per_page', $items_per_page, PDO::PARAM_INT);
