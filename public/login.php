@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once '../bootstrap.php';
 
@@ -13,12 +12,9 @@ $users = User::all();
 $pass1 = '';
 $pass2 = '';
 
-// var_dump($_POST);
 
-
-
-//if $pass1 == $pass2, then set $pass2 as password on insert 
-if (!empty($_POST)) {
+if (!empty($_POST)) 
+{
 
     if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::get('password1')) && !empty(Input::get('password'))) 
     {
@@ -46,7 +42,6 @@ if (!empty($_POST)) {
                 $errors['phone'] = "An error occurred: " . $e->getMessage();
             }
         } else {
-
             $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
             var_dump($phone);
             try {
@@ -112,11 +107,10 @@ extract(pageController());
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-formhelpers.css">
 </head>
 <body>
-    <?// include "../views/partials/navbar.php"; ?>
+    <? include "../views/partials/navbar.php"; ?>
 
 
     <div class="container main">
-
 
         <div class="loginFormFloat">
             <h1>Log In or Create Account</h1>
@@ -152,7 +146,7 @@ extract(pageController());
                     <div class="form-group">
                     <label for="phone-number">Phone number:</label><p class="error"><? if (isset($errors['phone'])){ echo $errors['phone'];};?></p>
                     <!-- I used an input type of text here so browsers like Chrome do not display the spin box -->
-                    <input id="phone-number" name="phone" type="text" maxlength="14" placeholder="(XXX) XXX-XXXX" />
+                    <input id="phone-number" name="phone" type="text" maxlength="14" placeholder="Optional" />
                     </div>
 
                     <div class="form-group">
@@ -177,6 +171,8 @@ extract(pageController());
 
 
     <? include "../views/partials/footer.php"; ?>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <script type="text/javascript">
