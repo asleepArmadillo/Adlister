@@ -14,10 +14,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="login.php">Log In / Sign Up</a></li>
-                <li><a href="ads.create.php">List Item</a></li>
-
+                <? if (Auth::check()) { ?>
+                  <li><a href="ads.create.php">List Item</a></li>
+                  <li><a href="logout.php">Logout</a></li>
+                <? } else { ?>
+                  <li><a href="login.php">Log In / Sign Up</a></li>
+                <? }; ?>
               </ul>
             </div>
           </div>
@@ -25,3 +27,4 @@
 
       </div>
     </div>
+

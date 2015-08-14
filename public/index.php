@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'ads.index.php';
 require_once '../bootstrap.php';
 
