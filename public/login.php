@@ -27,7 +27,12 @@ if (!empty($_POST))
         } catch (Exception $e) {
             $errors['name'] = "An error occurred: " . $e->getMessage();
         }
+<<<<<<< HEAD
 
+=======
+    } else {
+        $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
+>>>>>>> bd0b80503dff53b1c4099863cebaa7c7eb890720
         try {
             $user->email = Input::getString('email');
         } catch (Exception $e) {
