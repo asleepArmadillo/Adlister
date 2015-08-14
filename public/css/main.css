@@ -1,7 +1,7 @@
 
 /* GLOBAL STYLES
 -------------------------------------------------- */
-/* Padding below the footer and lighter body text */
+
 @font-face {
 	font-family: 'Quattrocento';
     src: url('../fonts/quattrocento/Quattrocento-Regular.ttf') format('truetype');
@@ -62,6 +62,10 @@ h3 {
     font-weight: bold;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 .main {
 	margin-top: 8rem;
 }
@@ -70,6 +74,12 @@ h3 {
     font-family: 'Oswald', serif;
     font-size: 2em;
 }
+
+#sidebar {
+	float: left;
+	height: 1200px;
+}
+
 
 
 
@@ -83,7 +93,6 @@ h3 {
   right: 0;
   left: 0;
   z-index: 20;
-
 }
 
 /* Flip around the padding for proper display in narrow viewports */
@@ -91,10 +100,12 @@ h3 {
   padding-right: 0;
   padding-left: 0;
 }
+
 .navbar-wrapper .navbar {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .navbar-wrapper .navbar .container {
   width: auto;
 }
@@ -108,6 +119,7 @@ h3 {
   height: 500px;
   margin-bottom: -3rem;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
@@ -118,6 +130,7 @@ h3 {
   height: 500px;
   background-color: #777;
 }
+
 .carousel-inner > .item > img {
   position: absolute;
   top: 0;
@@ -152,12 +165,26 @@ h3 {
 
 /* CUSTOM THUMBNAIL
 -------------------------------------------------- */
-.thumbnail > h2 {
-	color: #d9534f;
+
+.thumbnail-group {
+	float: right;
+	margin: 0 auto;
 }
 
 .thumbnail {
-	padding: 2rem;
+	padding: 1.5rem;
+	position: relative;
+	margin-right: 0 auto;
+}
+
+.thumbnail > h2 {
+	color: #d9534f;
+	text-align: center;
+}
+
+
+.thumbnail > img {
+	padding: 0.5rem;
 }
 
 
@@ -185,6 +212,42 @@ h3 {
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
+@media (min-width: 1200px) {
+
+	.thumbnail-group {
+		float: right;
+		min-width: 100%;
+		height: 100%;
+	}
+
+	.thumbnail {
+		float: right;
+		width: 500px;
+		height: 100%;
+	}
+}
+
+
+@media (min-width: 992px) {
+
+	.thumbnail-group {
+		float: right;
+		width: 100%;
+		height: 100%;
+	
+	}
+
+	.thumbnail {
+		float: right;
+		min-width: 300px;
+		max-width: 330px;
+		height: 100%;
+	}
+
+}
+
+
+
 @media (min-width: 768px) {
 	/* Navbar positioning foo */
 	.navbar-wrapper {
@@ -211,14 +274,23 @@ h3 {
 		line-height: 1.4;
 	}
 
-	.featurette-heading {
-		font-size: 50px;
+	.thumbnail-group {
+		float: right;
+		max-width: 100%;
+		height: 100%;
 	}
+
+	.thumbnail {
+  		float: right !important;
+  		width: 230px;
+  		height: 100%;
+  	}
+
 }
 
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
-  }
-}
+@media (max-width: 767px) {	
 
+	.thumbnail {
+  		float: center;
+  	}
+}

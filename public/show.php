@@ -28,10 +28,6 @@ if (Input::has('id')) {
 
 
     <div class="container main">
-    
-
-        <!-- This include is for sidebar navigation -->
-        <? include "../views/partials/sidebar.php"; ?>
 
         <div class="row">
 

@@ -65,25 +65,27 @@ $pageDown = $page - 1;
     <!-- Container below the slider
     ================================================== -->
     <div class="container main">
-        <!-- This include is for sidebar navigation -->
-        <? include "../views/partials/sidebar.php"; ?>
-        
         <div class="row">
-            <? foreach($ads as $ad): ?>
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <div class="col-xs-12 col-sm-offset-1 col-sm-3 col-md-offset-1 col-md-3 col-lg-offset-1 col-lg-3 sidebar-offcanvas" id="sidebar">
+                <!-- This include is for sidebar navigation -->
+                <? include "../views/partials/sidebar.php"; ?>
+            </div>
+        
+            <? foreach($ads as $id => $ad): ?>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="thumbnail">
-                        <h2><?= $ad['title']; ?> - $<?= $ad['price']; ?></h2>
-                            
-                        <img class="img-thumbnail img-responsive" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true">
-
+                        <h2><a href="show.php?id=<?= $id; ?>"><?= $ad['title']; ?> - $<?= $ad['price']; ?></a></h2>
+                        <a href="show.php?id=<?= $id; ?>"><img class="img-responsive" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true"></a>
                         <p><?= $ad['type']; ?></p>
                         <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p> 
-                        <p>Posted by: <?= $ad['name']?></p>
+
+                        <!--p>Posted by: <?//= $ad['name']?></p-->
                         <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 </div>
             <? endforeach; ?>
-            
+        </div>
+    </div>
             <nav>
                 <ul class="pager">
                     <? if ($totalListings >= $items_per_page) : ?>        
@@ -92,17 +94,13 @@ $pageDown = $page - 1;
                             <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
                         <? endif; ?>
                         <? if ($page < $lastPage) : ?>
-                            <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
                             <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
+                            <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
                         <? endif; ?>
                     <? endif; ?>
                 </ul>
             </nav>
 
-        </div>
-
-
-    </div>
 
 
     <? include "../views/partials/footer.php"; ?>
