@@ -1,6 +1,4 @@
 <?php
-// var_dump($_POST);
-// var_dump($_FILES);
 
 require_once 'ads.index.php';
 require_once '../bootstrap.php';

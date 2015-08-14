@@ -38,7 +38,7 @@ class User extends Model
     public static function findUserByEmail($email)
     {
         self::dbConnect();
-        $query = 'SELECT user_id, email, password FROM users WHERE email = :email';
+        $query = 'SELECT user_id, name, email, password FROM users WHERE email = :email';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':email', $email, PDO::PARAM_INT);
         $stmt->execute();

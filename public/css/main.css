@@ -110,6 +110,10 @@ a:hover {
   width: auto;
 }
 
+.navbar-nav > li {
+	vertical-align: center;
+}
+
 
 /* CUSTOM CAROUSEL
 -------------------------------------------------- */
