@@ -29,7 +29,7 @@ if ($page < 1) {
 $offset = ($page - 1) * $items_per_page;
 
 $ads = Ad::pager($offset, $items_per_page);
-var_dump($ads);
+// var_dump($ads);
 $pageUp = $page + 1;
 $pageDown = $page - 1;
 
