@@ -35,6 +35,17 @@ class User extends Model
         return $instance;
     }
 
+    public static function findUserByEmail($email)
+    {
+        self::dbConnect();
+        $query = 'SELECT user_id, email, password FROM users WHERE email = :email';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->bindValue(':email', $email, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function all()
     {
         self::dbConnect();
@@ -86,8 +97,6 @@ class User extends Model
             $instance->attributes = $result;
         }
         return $instance;
-
-
     }
 
 
