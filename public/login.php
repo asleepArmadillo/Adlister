@@ -13,7 +13,7 @@ $users = User::all();
 $pass1 = '';
 $pass2 = '';
 
-var_dump($_POST);
+// var_dump($_POST);
 
 
 
@@ -45,8 +45,11 @@ if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::g
             $errors['phone'] = "An error occurred: " . $e->getMessage();
         }
     } else {
+
+        $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
+        var_dump($phone);
         try {
-            $user->phone = Input::getNumber('phone');
+            $user->phone = $phone;
         } catch (Exception $e) {
             $errors['phone'] = "An error occurred: " . $e->getMessage();
         }
@@ -185,6 +188,9 @@ extract(pageController());
 
             // Auto-format- do not expose the mask as the user begins to type
             if (key !== 8 && key !== 9) {
+                if ($phone.val().length === 0) {
+                    $phone.val('(');
+                }
                 if ($phone.val().length === 4) {
                     $phone.val($phone.val() + ')');
                 }
