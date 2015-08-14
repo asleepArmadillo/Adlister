@@ -63,10 +63,12 @@ class User extends Model
 
     public function update()
     {
-        $query = 'UPDATE users SET first_name = :first_name, last_name = :last_name WHERE id = :id';
+        $query = 'UPDATE users SET name = :name, email = :email, phone = :phone WHERE password = :password AND id = :id';
         $stmt = self::$dbc->prepare($query);
-        $stmt->bindValue(':first_name', $this->attributes['first_name'], PDO::PARAM_STR);
-        $stmt->bindValue(':last_name', $this->attributes['last_name'], PDO::PARAM_STR);
+        $stmt->bindValue(':name', $this->attributes['name'], PDO::PARAM_STR);
+        $stmt->bindValue(':email', $this->attributes['email'], PDO::PARAM_STR);
+        $stmt->bindValue(':phone', $this->attributes['phone'], PDO::PARAM_STR);
+        $stmt->bindValue(':password', $this->attributes['password'], PDO::PARAM_STR);
         $stmt->bindValue(':id', $this->attributes['id'], PDO::PARAM_STR);
         $stmt->execute();
 
@@ -74,10 +76,12 @@ class User extends Model
 
     public function insert()
     {
-        $query - 'INSERT INTO users (first_name, last_name) VALUES (:first_name, :last_name);';
+        $query = 'INSERT INTO users (name, email, password, phone) VALUES (:name, :email, :password, :phone);';
         $stmt = self::$dbc->prepare($query);
-        $stmt->bindValue(':first_name', $this->attributes['first_name'], PDO::PARAM_STR);
-        $stmt->bindValue(':last_name', $this->attributes['last_name'], PDO::PARAM_STR);
+        $stmt->bindValue(':name', $this->attributes['name'], PDO::PARAM_STR);
+        $stmt->bindValue(':email', $this->attributes['email'], PDO::PARAM_STR);
+        $stmt->bindValue(':password', $this->attributes['password'], PDO::PARAM_STR);
+        $stmt->bindValue(':phone', $this->attributes['phone'], PDO::PARAM_STR);
         $stmt->execute();
     }
 
