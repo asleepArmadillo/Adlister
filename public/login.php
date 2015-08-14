@@ -44,7 +44,6 @@ if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::g
             $errors['phone'] = "An error occurred: " . $e->getMessage();
         }
     } else {
-
         $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
         try {
             $user->phone = $phone;
