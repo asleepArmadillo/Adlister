@@ -1,5 +1,5 @@
 <?php  
-
+session_start();
 require_once '../utils/Input.php';
 require_once '../utils/Logger.php';
 require_once '../models/BaseModel.php';

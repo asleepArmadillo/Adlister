@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 require_once '../bootstrap.php';
 
@@ -47,7 +46,6 @@ if (!empty(Input::get('name')) && !empty(Input::get('email')) && !empty(Input::g
     } else {
 
         $phone = str_replace(str_split('() -'), "", Input::getString('phone'));
-        var_dump($phone);
         try {
             $user->phone = $phone;
         } catch (Exception $e) {
@@ -151,7 +149,7 @@ extract(pageController());
                     <div class="form-group">
                     <label for="phone-number">Phone number:</label><p class="error"><? if (isset($errors['phone'])){ echo $errors['phone'];};?></p>
                     <!-- I used an input type of text here so browsers like Chrome do not display the spin box -->
-                    <input id="phone-number" name="phone" type="text" maxlength="14" placeholder="(XXX) XXX-XXXX" />
+                    <input id="phone-number" name="phone" type="text" maxlength="14" placeholder="Optional" />
                     </div>
 
                     <div class="form-group">
