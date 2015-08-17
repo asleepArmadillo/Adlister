@@ -112,8 +112,6 @@ var_dump($test);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Custom styling for site -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
@@ -133,26 +131,26 @@ var_dump($test);
     ================================================== -->
     <div class="container main">
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-1 col-sm-3 sidebar-offcanvas" id="sidebar">
+
+            <div class="col-xs-12 col-md-4 col-lg-4 sidebar-offcanvas" id="sidebar">
                 <!-- This include is for sidebar navigation -->
                 <? include "../views/partials/sidebar.php"; ?>
             </div>
 
+
+            <div id="specialDiv">
             <!-- Three columns of text below the carousel -->
-            <div id="listing-group">
                 <? foreach($ads as $id => $ad): ?>
-                    <div class="col-xs-12 col-md-4 listing">
+                    <div class="col-xs-12 col-md-4 col-lg-4 listing">
                         <a href="show.php?id=<?= $id; ?>"><img class="img-circle" src="<?= $ad['image_url']; ?>" width="140" height="140"></a>
                         <h2><a href="show.php?id=<?= $id; ?>"><?= $ad['title']; ?> - $<?= $ad['price']; ?></a></h2>
                         <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p>
                         
                         <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div><!-- /.col-lg-4 -->
+                    </div>
                 <? endforeach; ?>
             </div>
         </div>
-    </div>
-    </div>    
 
 
 
@@ -174,10 +172,13 @@ var_dump($test);
             </nav>
 
 
+    </div>
 
-    <? include "../views/partials/footer.php"; ?>
+        <div class="footer">
+            <? include "../views/partials/footer.php"; ?>
 
-    
+        </div>
+
 
 
 <!-- Bootstrap core JavaScript
