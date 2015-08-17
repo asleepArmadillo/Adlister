@@ -37,8 +37,11 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
     //         $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
     //     }
     // }   
+    var_dump($ad);
+    $instrument_type = Input::getString('instrument_type');
+    var_dump($instrument_type);
 
-    switch (Input::getString('instrument_type')) {
+    switch ($instrument_type) {
         case 'Accordion':
             try {
                 $ad->category_id = 1;
@@ -95,7 +98,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                 $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
             }
             break;
-        case 'Amplifiers / Gear':
+        case 'Amplifier / Gear':
             try {
                 $ad->category_id = 9;
             } catch (Exception $e) {
@@ -110,32 +113,42 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
             }
             break;  
     }
+    var_dump($ad);
 
-    if (!isset($ad->category_id)) {
-        $errors['instrument_type'] = "Enter a legal instrument_type";
-    }
+    // if (!isset($ad->category_id)) {
+    //     $errors['instrument_type'] = "Enter a legal instrument  type";
+    // }
 
-    if (strlen(Input::getString('Brand')) > 100) {
-        $errors['Brand'] = "Please shorten your title to less than 100 characters.";
-    } else {   
-        try {
-            $ad->brand = Input::getString('brand');
-        } catch (Exception $e) {
-            $errors['brand'] = "An error occurred: " . $e->getMessage();
+    if (Input::has('brand')) {
+        if (strlen(Input::getString('Brand')) > 100) {
+            $errors['Brand'] = "Please shorten the brand to less than 100 characters.";
+        } else {   
+            try {
+                $ad->brand = Input::getString('brand');
+            } catch (Exception $e) {
+                $errors['brand'] = "An error occurred: " . $e->getMessage();
+            }
         }
+    } else {
+        $ad->brand = null;
     }
 
-    if (strlen(Input::getNumber('year')) > 4) {
-        $errors['year'] = "Please enter an accurate year.";
-    } else {   
-        try {
-            $ad->year = Input::getNumber('year');
-        } catch (Exception $e) {
-            $errors['year'] = "An error occurred: " . $e->getMessage();
+    if (!empty(Input::get('year'))) {
+        if (strlen(Input::getString('year')) > 4) {
+            $errors['year'] = "Please enter an accurate year.";
+        } else {   
+            try {
+                $ad->year = Input::getNumber('year');
+            } catch (Exception $e) {
+                $errors['year'] = "An error occurred: " . $e->getMessage();
+            }
         }
+    } else {
+        $ad->year = null;
     }
+
     if (strlen(Input::getString('item_condition')) > 70) {
-        $errors['item_condition'] = "Please shorten your title to less than 70 characters.";
+        $errors['item_condition'] = "Please shorten the condition to less than 70 characters.";
     } else {   
         try {
             $ad->item_condition = Input::getString('item_condition');
@@ -144,8 +157,8 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
         }
     }
 
-    if (strlen(Input::getNumber('price')) > 10) {
-        $errors['price'] = "Please shorten your title to less than 10 characters.";
+    if (strlen(Input::getString('price')) > 10) {
+        $errors['price'] = "Please shorten your price to less than 10 characters.";
     } else {   
         try {
             $ad->price = Input::getNumber('price');
@@ -163,6 +176,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
             $errors['description'] = "An error occurred: " . $e->getMessage();
         }
     }
+
     if($_FILES['somefile']['name'] == '') {
         $filename = null;
     } else {
@@ -185,13 +199,16 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 
     $ad->date_posted = date('Y-m-d');
 
-    $ad->user_id = 1;
+    $userEmail = Auth::user();
+    var_dump($userEmail);
+    $userID = User::loggedInUserID($userEmail);
+    var_dump($userID);
 
-    $auth_test = Auth::user();
-    var_dump($auth_test);
+    $ad->user_id = $userID;
 
 
     if (empty($errors)) {
+        var_dump($ad);
         $ad->save();
         header("Location: success.php");
         exit();
@@ -215,7 +232,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <? include "../views/partials/navbar.php"; ?>
+    <?// include "../views/partials/navbar.php"; ?>
 
     <div class="container main">
 
