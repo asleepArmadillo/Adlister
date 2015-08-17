@@ -34,7 +34,7 @@ $lastId = Ad::count() - 1;
 
     <div class="container main">
 
-        <div class="row" id="listing-wrapper">
+        <div class="row" class="listing-wrapper">
 
             <h1><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h1>
 
