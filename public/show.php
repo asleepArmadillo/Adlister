@@ -7,11 +7,16 @@ $ads = [];
 
 $ads = Ad::all();
 
-if (Input::has('id')) {
+if (Input::has('id') && Input::get('id') >= 0) {
     $id = Input::get('id');
 } else {
     $id = 0;
 }
+
+$idUp = $id + 1;
+$idDown = $id -1;
+
+$lastId = Ad::count() - 1;
 
 ?>
 
@@ -53,6 +58,20 @@ if (Input::has('id')) {
             </ul>
 
         </div>
+
+        <nav>
+            <ul class="pager">
+                <? if ($id > 0) : ?>        
+                    <li class="previous"><a href="?id=0" class="btn btn-default">First Listing</a></li>
+                    <li class="previous"><a href="?id=<?= $idDown; ?>" class="btn btn-default">Previous</a></li>
+                <? endif; ?>
+                <? if ($id < $lastId) : ?>
+                    <li class="next"><a href="?id=<?= $idUp; ?>" class="btn btn-default">Next</a></li>
+                    <li class="next"><a href="?id=<?= $lastId; ?>" class="btn btn-default">Last Listing</a></li>
+                <? endif; ?>
+               
+            </ul>
+        </nav>
 
     </div>
 
