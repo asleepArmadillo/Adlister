@@ -17,7 +17,8 @@ class Ad extends Model
                                     L.id,
                                     C.type, 
                                     C.category_id, 
-                                    U.name
+                                    U.name,
+                                    U.email
                                     FROM listings AS L
                                     LEFT JOIN categories AS C 
                                     ON L.category_id = C.category_id
