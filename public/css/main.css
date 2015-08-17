@@ -77,8 +77,29 @@ a:hover {
 
 #sidebar {
 	float: left;
-	height: 1200px;
+	height: 100%;
 }
+
+#listing-group {
+	background-color: #FFFFFF;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 
 
 
@@ -152,6 +173,14 @@ a:hover {
 	font-size: 3rem;
 }
 
+/* CUSTOM LISTING
+-------------------------------------------------- */
+.listing {
+  	text-align: center;
+  	padding: 1.5rem;
+}
+
+
 
 /* CUSTOM FOOTER
 -------------------------------------------------- */
@@ -167,29 +196,7 @@ a:hover {
   margin: 20px 0;
 }
 
-/* CUSTOM THUMBNAIL
--------------------------------------------------- */
 
-.thumbnail-group {
-	float: right;
-	margin: 0 auto;
-}
-
-.thumbnail {
-	padding: 1.5rem;
-	position: relative;
-	margin-right: 0 auto;
-}
-
-.thumbnail > h2 {
-	color: #d9534f;
-	text-align: center;
-}
-
-
-.thumbnail > img {
-	padding: 0.5rem;
-}
 
 
 
