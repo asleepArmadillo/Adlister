@@ -145,11 +145,7 @@ $pageDown = $page - 1;
                         <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div>
                 <? endforeach; ?>
-            </div>
-
-            
-        </div>
-       
+            </div>       
 
 
 
