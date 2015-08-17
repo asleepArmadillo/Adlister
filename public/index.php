@@ -129,7 +129,7 @@ $pageDown = $page - 1;
     <div class="container main">
         <div class="row">
 
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-md-4 col-lg-4">
                 <!-- This include is for sidebar navigation -->
                 <? include "../views/partials/sidebar.php"; ?>
             </div>
