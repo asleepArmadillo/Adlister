@@ -2,9 +2,62 @@
 require_once 'ads.index.php';
 require_once '../bootstrap.php';
 
+// switch ($_SERVER['REQUEST_URI']) {
+//     case '/create':
+//         include 'ads.create.php';
+//         break;
+//     case '/ads/show':
+//         include 'show.php';
+//         break;
+//     default:
+//         include 'home.php';
+//         break;
+// }
+
 $ads = [];
 
-// $ads = Ad::all();
+
+if (Input::has('type')) {
+    $cat = Input::get('type');
+    $catString = "?type=$cat&";
+}
+
+if (Input::has('type')) {
+    switch(Input::get('type')) {
+        case 'accordion':
+            $type = 1;
+            break;
+        case 'brass':
+            $type = 2;
+            break;
+        case 'guitar':
+            $type = 3;
+            break;
+        case 'harmonica':
+            $type = 4;
+            break;
+        case 'percussion':
+            $type = 5;
+            break;
+        case 'pianokeys':
+            $type = 6;
+            break;
+        case 'string':
+            $type = 7;
+            break;
+        case 'woodwind':
+            $type = 8;
+            break;
+        case 'ampgear':
+            $type = 9;
+            break;
+        case 'other':
+            $type = 10;
+            break;
+    }
+} else {
+    $type = 'all';
+}
 
 if(Input::has('page')) {
     $page = Input::get('page');
@@ -12,10 +65,15 @@ if(Input::has('page')) {
     $page = 1;
 }
 
-
 $items_per_page = 4;
 
-$totalListings = Ad::count();
+if (isset($catString)) {
+    $totalListings = Ad::countPerCat($type);
+} else {
+    $totalListings = Ad::count();
+}
+
+
 $lastPage = ceil($totalListings / $items_per_page);
 
 if ($page > $lastPage) {
@@ -27,10 +85,20 @@ if ($page < 1) {
 
 $offset = ($page - 1) * $items_per_page;
 
-$ads = Ad::pager($offset, $items_per_page);
+
+
+if (isset($type) && $type != 'all') {
+    $ads = Ad::pagerWithCat($offset, $items_per_page, $type);
+} else {
+    $ads = Ad::pager($offset, $items_per_page);  
+}
 // var_dump($ads);
 $pageUp = $page + 1;
 $pageDown = $page - 1;
+
+
+$test = Auth::user();
+var_dump($test);
 
 ?>
 
@@ -94,12 +162,12 @@ $pageDown = $page - 1;
                 <ul class="pager">
                     <? if ($totalListings >= $items_per_page) : ?>        
                         <? if ($page > 1) : ?>
-                            <li class="previous"><a href="?page=1" class="btn btn-default">First Page</a></li>
-                            <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
+                            <li class="previous"><a href="<? if (isset($catString)) { echo $catString; } ?>page=1" class="btn btn-default">First Page</a></li>
+                            <li class="previous"><a href="<? if (isset($catString)) { echo $catString; } ?>page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
                         <? endif; ?>
                         <? if ($page < $lastPage) : ?>
-                            <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
-                            <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
+                            <li class="next"><a href="<? if (isset($catString)) { echo $catString; } ?>page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
+                            <li class="next"><a href="<? if (isset($catString)) { echo $catString; } ?>page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
                         <? endif; ?>
                     <? endif; ?>
                 </ul>

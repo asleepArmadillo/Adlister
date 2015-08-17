@@ -17,6 +17,18 @@ class User extends Model
         }
     }
 
+    public static function loggedInUserID($email)
+    {
+        self::dbConnect();
+        $query = 'SELECT user_id FROM users WHERE email = :email';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result[0]['user_id'];
+    }
+
     public static function find($id)
     {
         self::dbConnect();
