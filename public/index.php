@@ -97,9 +97,6 @@ $pageUp = $page + 1;
 $pageDown = $page - 1;
 
 
-$test = Auth::user();
-var_dump($test);
-
 ?>
 
 <html>

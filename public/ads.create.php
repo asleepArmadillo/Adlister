@@ -232,7 +232,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <?// include "../views/partials/navbar.php"; ?>
+    <? include "../views/partials/navbar.php"; ?>
 
     <div class="container main">
 
