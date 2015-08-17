@@ -5,6 +5,9 @@ if (!Auth::check()) {
     exit();
 }
 
+
+
+
 ?>
 
 <html>
@@ -21,18 +24,28 @@ if (!Auth::check()) {
 
     <div class="container main">
 
+        <div class="row listing-wrapper">
 
-    <h1>Your listing has been created successfully!</h1>
-    <h2>We're headed there now...</h2>
+            <h1><?= $userInfo[0]['name']; ?></h1>
+
+            <h2>Your contact info</h2>
+            <ul>
+                <li>Email: <?= $userInfo[0]['email']; ?></li>
+            </ul>
             
+            <h2>Your listings</h2>
 
+
+        </div>
   
 
     </div>
 
 
 
-    <? include "../views/partials/footer.php"; ?>
+    <div class="footer">
+        <? include "../views/partials/footer.php"; ?>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

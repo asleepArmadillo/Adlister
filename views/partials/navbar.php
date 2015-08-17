@@ -29,7 +29,7 @@ if (Auth::check()) {
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="ads.create.php">List Your Item</a></li>
-                                <li><a href="#">Edit/Delete Listings</a></li>
+                                <li><a href="users.show.php">Edit/Delete Listings</a></li>
                                 <li><a href="logout.php">Logout</a></li>
                             </ul>
                         <? } else { ?>
