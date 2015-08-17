@@ -1,24 +1,23 @@
 <?php
 
-
-//THIS IS BOILERPLATE CODE FOR OUR AUTH CLASS
-
-
-
 require_once 'Logger.php';
 require_once 'Input.php';
+require_once '../bootstrap.php';
 
 class Auth {
-	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
-
 	public static function attempt($username, $password)
 	{
-		if (password_verify($password, static::$password)) {
-			$_SESSION["LOGGED_IN_USER"]= $username;
-		    header("Location: authorized3.php");
-		    exit();
+		$data = User::findUserByEmail($username);
+		if (empty($data)) {
+			return 'Please create a user first.';
 		} else {
-		    echo 'Invalid password.';
+			if (password_verify($password, $data[0]['password'])) {
+				$_SESSION["LOGGED_IN_USER"]= $username;
+			    header("Location: auth.login.php");
+			    exit();
+			} else {
+			    return 'Invalid password.';
+			}
 		}
 	}
 

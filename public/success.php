@@ -5,6 +5,12 @@ if (!Auth::check()) {
     exit();
 }
 
+$listing = Ad::count() - 1;
+var_dump($listing);
+
+
+header("Refresh: 3;url=show.php?id=$listing");
+
 ?>
 
 <html>
@@ -16,7 +22,7 @@ if (!Auth::check()) {
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <? include "../views/partials/navbar.php"; ?>
+    <?// include "../views/partials/navbar.php"; ?>
 
 
     <div class="container main">
