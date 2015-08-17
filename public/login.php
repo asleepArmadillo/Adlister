@@ -80,7 +80,7 @@ if (isset($_SESSION['LOGGED_IN_USER'])) {
 
 function pageController(){
     $data = [];
-    $data['location'] = 'login.php';
+    $data['location'] = '/login';
 
     $password = Input::get('password');
     $userName = Input::get('user');

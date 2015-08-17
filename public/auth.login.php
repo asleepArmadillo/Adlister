@@ -4,7 +4,7 @@ session_start();
 require_once '../bootstrap.php';
 
 if (Auth::check()) {
-    header("Location: index.php");
+    header("Location: /");
     exit();
 }
 

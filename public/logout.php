@@ -3,7 +3,7 @@
 require_once '../bootstrap.php';
 
 Auth::logout();
-header("Location: login.php");
+header("Location: /");
 exit();
 
 ?>

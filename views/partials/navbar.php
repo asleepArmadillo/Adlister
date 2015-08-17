@@ -28,13 +28,13 @@ if (Auth::check()) {
                                 <li class="active"><a>Hi, <?= $userInfo[0]['name']; ?>!</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="ads.create.php">List Your Item</a></li>
+                                <li><a href="/create">List Your Item</a></li>
                                 <li><a href="#">Edit/Delete Listings</a></li>
-                                <li><a href="logout.php">Logout</a></li>
+                                <li><a href="/logout">Logout</a></li>
                             </ul>
                         <? } else { ?>
                             <ul class="nav navbar-nav navbar-left">
-                                <li class="active"><a href="login.php">Log In / Sign Up</a></li>
+                                <li class="active"><a href="/login">Log In / Sign Up</a></li>
                             </ul>
                     <? }; ?>
                     </ul>
