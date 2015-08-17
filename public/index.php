@@ -65,40 +65,45 @@ $pageDown = $page - 1;
     ================================================== -->
     <div class="container main">
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-1 col-sm-3 col-md-offset-1 col-md-3 col-lg-offset-1 col-lg-3 sidebar-offcanvas" id="sidebar">
+            <div class="col-xs-12 col-sm-offset-1 col-sm-3 sidebar-offcanvas" id="sidebar">
                 <!-- This include is for sidebar navigation -->
                 <? include "../views/partials/sidebar.php"; ?>
             </div>
-        
-            <? foreach($ads as $id => $ad): ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="thumbnail">
-                        <h2><a href="show.php?id=<?= $ad['id']-1; ?>"><?= $ad['title']; ?> - $<?= $ad['price']; ?></a></h2>
-                        <a href="show.php?id=<?= $ad['id']-1; ?>"><img class="img-responsive" data-src="<?= $ad['image_url']; ?>" src="<?= $ad['image_url']; ?>" data-holder-rendered="true"></a>
-                        <p><?= $ad['type']; ?></p>
-                        <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p> 
 
-                        <!--p>Posted by: <?//= $ad['name']?></p-->
+            <!-- Three columns of text below the carousel -->
+            <div id="listing-group">
+                <? foreach($ads as $id => $ad): ?>
+                    <div class="col-xs-12 col-md-4 listing">
+                        <a href="show.php?id=<?= $id; ?>"><img class="img-circle" src="<?= $ad['image_url']; ?>" width="140" height="140"></a>
+                        <h2><a href="show.php?id=<?= $id; ?>"><?= $ad['title']; ?> - $<?= $ad['price']; ?></a></h2>
+                        <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p>
+                        
                         <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>
-                </div>
-            <? endforeach; ?>
+                    </div><!-- /.col-lg-4 -->
+                <? endforeach; ?>
+            </div>
         </div>
     </div>
-    <nav>
-        <ul class="pager">
-            <? if ($totalListings >= $items_per_page) : ?>        
-                <? if ($page > 1) : ?>
-                    <li class="previous"><a href="?page=1" class="btn btn-default">First Page</a></li>
-                    <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
-                <? endif; ?>
-                <? if ($page < $lastPage) : ?>
-                    <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
-                    <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
-                <? endif; ?>
-            <? endif; ?>
-        </ul>
-    </nav>
+    </div>    
+
+
+
+        
+            
+            <nav>
+                <ul class="pager">
+                    <? if ($totalListings >= $items_per_page) : ?>        
+                        <? if ($page > 1) : ?>
+                            <li class="previous"><a href="?page=1" class="btn btn-default">First Page</a></li>
+                            <li class="previous"><a href="?page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
+                        <? endif; ?>
+                        <? if ($page < $lastPage) : ?>
+                            <li class="next"><a href="?page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
+                            <li class="next"><a href="?page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
+                        <? endif; ?>
+                    <? endif; ?>
+                </ul>
+            </nav>
 
 
 
