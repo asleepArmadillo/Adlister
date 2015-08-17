@@ -19,7 +19,7 @@ $ads = [];
 
 if (Input::has('type')) {
     $cat = Input::get('type');
-    $catString = "?type=$cat&";
+    $catString = "type=$cat&";
 }
 
 if (Input::has('type')) {
@@ -134,45 +134,33 @@ $pageDown = $page - 1;
                 <? include "../views/partials/sidebar.php"; ?>
             </div>
 
-            
             <!-- Three columns of text below the carousel -->
-                <? foreach($ads as $id => $ad): ?>
-                    <div class="col-xs-12 col-md-4 col-lg-4 listing">
-                        <a href="show.php?id=<?= $id; ?>"><img class="img-circle" src="<?= $ad['image_url']; ?>" width="140" height="140"></a>
-                        <h2><a href="show.php?id=<?= $id; ?>"><?= $ad['title']; ?> - $<?= $ad['price']; ?></a></h2>
-                        <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p>
-                        
-                        <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>
-                <? endforeach; ?>
-            </div>
-
-            
-        </div>
-       
-
-
-
-        
-            
-            <nav>
-                <ul class="pager">
-                    <? if ($totalListings >= $items_per_page) : ?>        
-                        <? if ($page > 1) : ?>
-                            <li class="previous"><a href="<? if (isset($catString)) { echo $catString; } ?>page=1" class="btn btn-default">First Page</a></li>
-                            <li class="previous"><a href="<? if (isset($catString)) { echo $catString; } ?>page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
-                        <? endif; ?>
-                        <? if ($page < $lastPage) : ?>
-                            <li class="next"><a href="<? if (isset($catString)) { echo $catString; } ?>page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
-                            <li class="next"><a href="<? if (isset($catString)) { echo $catString; } ?>page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
-                        <? endif; ?>
-                    <? endif; ?>
-                </ul>
-            </nav>
-
-
+            <? foreach($ads as $id => $ad): ?>
+                <div class="col-xs-12 col-md-4 col-lg-4 listing">
+                    <a href="show.php?id=<?= $ad['id']-1; ?>"><img class="img-circle" src="<?= $ad['image_url']; ?>" width="140" height="140"></a>
+                    <h2><a href="show.php?id=<?= $ad['id']-1; ?>"><?= $ad['title']; ?> - $<?= $ad['price']; ?></a></h2>
+                    <p><?= mb_strimwidth($ad['description'], 0, 150, "..."); ?></p>
+                    
+                    <a href="show.php?id=<?= $ad['id']-1; ?>" class="btn btn-sm btn-primary">More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            <? endforeach; ?>
+        </div>   
     </div>
-
+                
+    <nav>
+        <ul class="pager">
+            <? if ($totalListings >= $items_per_page) : ?>        
+                <? if ($page > 1) : ?>
+                    <li class="previous"><a href="?<? if (isset($catString)) { echo $catString; }?>page=1" class="btn btn-default">First Page</a></li>
+                    <li class="previous"><a href="?<? if (isset($catString)) { echo $catString; }?>page=<?= $pageDown; ?>" class="btn btn-default">Previous</a></li>
+                <? endif; ?>
+                <? if ($page < $lastPage) : ?>
+                    <li class="next"><a href="?<? if (isset($catString)) { echo $catString; }?>page=<?= $pageUp; ?>" class="btn btn-default">Next</a></li>
+                    <li class="next"><a href="?<? if (isset($catString)) { echo $catString; }?>page=<?= $lastPage; ?>" class="btn btn-default">Last Page</a></li>
+                <? endif; ?>
+            <? endif; ?>
+        </ul>
+    </nav>
 
     <div class="footer">
         <? include "../views/partials/footer.php"; ?>
