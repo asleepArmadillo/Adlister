@@ -41,7 +41,6 @@
 body {
 	background-image: url("/img/retina_wood.png");
 	background-repeat: repeat;
-	padding-bottom: 40px;
 	color: #5a5a5a;
     font-family: 'Quattrocento', serif;
 }
@@ -75,9 +74,8 @@ a:hover {
     font-size: 2em;
 }
 
-#sidebar {
-	float: left;
-	height: 1200px;
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
 }
 
 
@@ -152,9 +150,33 @@ a:hover {
 	font-size: 3rem;
 }
 
+/* CUSTOM LISTING
+-------------------------------------------------- */
+#listing-wrapper {
+	background-color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+	padding: 3rem;
+	margin: 0 auto;
+}
+
+.listing {
+  	text-align: center;
+  	padding: 1.5rem;
+  	background-color: #FFFFFF;
+  	max-height: 100%;
+}
+
+
 
 /* CUSTOM FOOTER
 -------------------------------------------------- */
+
+.footer {
+	background-color: #dedede;
+	padding-bottom: 4rem;
+
+}
 
 .footer-container {
 	margin: 0 auto;
@@ -167,29 +189,7 @@ a:hover {
   margin: 20px 0;
 }
 
-/* CUSTOM THUMBNAIL
--------------------------------------------------- */
 
-.thumbnail-group {
-	float: right;
-	margin: 0 auto;
-}
-
-.thumbnail {
-	padding: 1.5rem;
-	position: relative;
-	margin-right: 0 auto;
-}
-
-.thumbnail > h2 {
-	color: #d9534f;
-	text-align: center;
-}
-
-
-.thumbnail > img {
-	padding: 0.5rem;
-}
 
 
 
@@ -218,35 +218,18 @@ a:hover {
 
 @media (min-width: 1200px) {
 
-	.thumbnail-group {
-		float: right;
-		min-width: 100%;
-		height: 100%;
-	}
-
-	.thumbnail {
-		float: right;
-		width: 500px;
-		height: 100%;
-	}
+	.col-lg-4 {
+    width: 33.33333333%;
+    min-height: 412px;
+    max-height: 100%;
 }
 
 
 @media (min-width: 992px) {
-
-	.thumbnail-group {
-		float: right;
-		width: 100%;
-		height: 100%;
-	
-	}
-
-	.thumbnail {
-		float: right;
-		min-width: 300px;
-		max-width: 330px;
-		height: 100%;
-	}
+	.listing .col-lg-4 {
+		width: 33.33333333%;
+		min-height: 412px;
+	    max-height: 100%;}
 
 }
 
@@ -278,23 +261,15 @@ a:hover {
 		line-height: 1.4;
 	}
 
-	.thumbnail-group {
-		float: right;
-		max-width: 100%;
-		height: 100%;
+
+
+
+}
+
+@media (max-width: 767px) {
+	.listing {
+	margin-right: 3rem;
+  	margin-left: 3rem;
 	}
-
-	.thumbnail {
-  		float: right !important;
-  		width: 230px;
-  		height: 100%;
-  	}
-
 }
 
-@media (max-width: 767px) {	
-
-	.thumbnail {
-  		float: center;
-  	}
-}

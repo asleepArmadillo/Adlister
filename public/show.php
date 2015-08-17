@@ -7,11 +7,16 @@ $ads = [];
 
 $ads = Ad::all();
 
-if (Input::has('id')) {
+if (Input::has('id') && Input::get('id') >= 0) {
     $id = Input::get('id');
 } else {
     $id = 0;
 }
+
+$idUp = $id + 1;
+$idDown = $id -1;
+
+$lastId = Ad::count() - 1;
 
 ?>
 
@@ -29,7 +34,7 @@ if (Input::has('id')) {
 
     <div class="container main">
 
-        <div class="row">
+        <div class="row" id="listing-wrapper">
 
             <h1><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h1>
 
@@ -47,18 +52,31 @@ if (Input::has('id')) {
             <p><?= $ads[$id]['description']; ?> </p>
 
             <h3>Contact:</h3>
-            <ul>
-                <li></li>
-                <li></li>
-            </ul>
+            <a href="mailto:<?= $ads[$id]['email']; ?>"><?= $ads[$id]['email']; ?></a>
 
         </div>
+
+        <nav>
+            <ul class="pager">
+                <? if ($id > 0) : ?>        
+                    <li class="previous"><a href="?id=0" class="btn btn-default">First Listing</a></li>
+                    <li class="previous"><a href="?id=<?= $idDown; ?>" class="btn btn-default">Previous</a></li>
+                <? endif; ?>
+                <? if ($id < $lastId) : ?>
+                    <li class="next"><a href="?id=<?= $idUp; ?>" class="btn btn-default">Next</a></li>
+                    <li class="next"><a href="?id=<?= $lastId; ?>" class="btn btn-default">Last Listing</a></li>
+                <? endif; ?>
+               
+            </ul>
+        </nav>
 
     </div>
 
 
 
-    <? include "../views/partials/footer.php"; ?>
+    <div class="footer">
+        <? include "../views/partials/footer.php"; ?>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

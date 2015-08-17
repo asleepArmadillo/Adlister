@@ -7,5 +7,6 @@ require_once '../models/Ad.php';
 require_once '../models/User.php';
 require_once '../utils/Auth.php';
 
+$_ENV = include '.env.php';
 
 ?>

@@ -16,7 +16,7 @@ class Auth {
 			    header("Location: auth.login.php");
 			    exit();
 			} else {
-			    echo 'Invalid password.';
+			    return 'Invalid password.';
 			}
 		}
 	}
