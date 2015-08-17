@@ -17,46 +17,151 @@ $ads = Ad::all();
 if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(Input::get('instrument_type')) && !empty(Input::get('item_condition')) && !empty(Input::get('price'))) {
     $ad = new Ad();
 
-    try {
-        $ad->type = Input::getString('instrument_type');
-    } catch (Exception $e) {
-        $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+    //Title constraints
+    if (strlen(Input::getString('title')) > 70) {
+        $errors['title'] = "Please shorten your title to less than 70 characters.";
+    } else {    
+        try {
+            $ad->title = Input::getString('title');
+        } catch (Exception $e) {
+            $errors['title'] = "An error occurred: " . $e->getMessage();
+        }
     }
 
-    try {
-        $ad->brand = Input::getString('brand');
-    } catch (Exception $e) {
-        $errors['brand'] = "An error occurred: " . $e->getMessage();
+    // if (strlen(Input::getString('instrument_type')) > 70) {
+    //     $errors['instrument_type'] = "Please shorten your title to less than 70 characters.";
+    // } else {   
+    //     try {
+    //         $ad->type = Input::getString('instrument_type');
+    //     } catch (Exception $e) {
+    //         $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+    //     }
+    // }   
+
+    switch (Input::getString('instrument_type')) {
+        case 'Accordion':
+            try {
+                $ad->category_id = 1;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Brass':
+            try {
+                $ad->category_id = 2;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Guitar':
+            try {
+                $ad->category_id = 3;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Harmonica':
+            try {
+                $ad->category_id = 4;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Percussion':
+            try {
+                $ad->category_id = 5;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Piano / Keys':
+            try {
+                $ad->category_id = 6;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'String':
+            try {
+                $ad->category_id = 7;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Woodwind':
+            try {
+                $ad->category_id = 8;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Amplifiers / Gear':
+            try {
+                $ad->category_id = 9;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;
+        case 'Other':
+            try {
+                $ad->category_id = 10;
+            } catch (Exception $e) {
+                $errors['instrument_type'] = "An error occurred: " . $e->getMessage();
+            }
+            break;  
     }
 
-    try {
-        $ad->year = Input::getNumber('year');
-    } catch (Exception $e) {
-        $errors['year'] = "An error occurred: " . $e->getMessage();
+    if (!isset($ad->category_id)) {
+        $errors['instrument_type'] = "Enter a legal instrument_type";
     }
 
-    try {
-        $ad->item_condition = Input::getString('item_condition');
-    } catch (Exception $e) {
-        $errors['item_condition'] = "An error occurred: " . $e->getMessage();
+    if (strlen(Input::getString('Brand')) > 100) {
+        $errors['Brand'] = "Please shorten your title to less than 100 characters.";
+    } else {   
+        try {
+            $ad->brand = Input::getString('brand');
+        } catch (Exception $e) {
+            $errors['brand'] = "An error occurred: " . $e->getMessage();
+        }
     }
 
-    try {
-        $ad->title = Input::getString('title');
-    } catch (Exception $e) {
-        $errors['title'] = "An error occurred: " . $e->getMessage();
+    if (strlen(Input::getNumber('year')) > 4) {
+        $errors['year'] = "Please enter an accurate year.";
+    } else {   
+        try {
+            $ad->year = Input::getNumber('year');
+        } catch (Exception $e) {
+            $errors['year'] = "An error occurred: " . $e->getMessage();
+        }
+    }
+    if (strlen(Input::getString('item_condition')) > 70) {
+        $errors['item_condition'] = "Please shorten your title to less than 70 characters.";
+    } else {   
+        try {
+            $ad->item_condition = Input::getString('item_condition');
+        } catch (Exception $e) {
+            $errors['item_condition'] = "An error occurred: " . $e->getMessage();
+        }
     }
 
-    try {
-        $ad->price = Input::getNumber('price');
-    } catch (Exception $e) {
-        $errors['price'] = "An error occurred: " . $e->getMessage();
+    if (strlen(Input::getNumber('price')) > 10) {
+        $errors['price'] = "Please shorten your title to less than 10 characters.";
+    } else {   
+        try {
+            $ad->price = Input::getNumber('price');
+        } catch (Exception $e) {
+            $errors['price'] = "An error occurred: " . $e->getMessage();
+        }
     }
 
-    try {
-        $ad->description = Input::getString('description');
-    } catch (Exception $e) {
-        $errors['description'] = "An error occurred: " . $e->getMessage();
+    if (strlen(Input::getString('description')) < 50) {
+        $errors['description'] = "Please review your description.";
+    } else {   
+        try {
+            $ad->description = Input::getString('description');
+        } catch (Exception $e) {
+            $errors['description'] = "An error occurred: " . $e->getMessage();
+        }
     }
     if($_FILES['somefile']['name'] == '') {
         $filename = null;
@@ -78,12 +183,13 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
         $errors['image_url'] = "An error occurred: " . $e->getMessage();
     }
 
-
     $ad->date_posted = date('Y-m-d');
-    $ad->category_id = 1;
+
     $ad->user_id = 1;
-    // var_dump($ad);
-    // var_dump($errors);
+
+    $auth_test = Auth::user();
+    var_dump($auth_test);
+
 
     if (empty($errors)) {
         $ad->save();
@@ -97,9 +203,6 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 // create/edit/update/delete their own listings. 
 // Non-registered users must create an account 
 // first before they can create a new listing to sell.
-
-
-
 
 ?>
 
@@ -125,7 +228,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="title">Title</label><p class="error"><? if (isset($errors['title'])){ echo $errors['title'];};?></p>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum" maxlength="70">
                         </div>
                     </div>
                 </div>
@@ -157,7 +260,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                             <span class="input-group-addon">
                                 <input type="checkbox" aria-label="..." id="brand">
                             </span>
-                            <input type="text" class="form-control" aria-label="..." id="brand" name="brand">
+                            <input type="text" class="form-control" aria-label="..." id="brand" name="brand" maxlength="100">
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
@@ -169,7 +272,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                             <span class="input-group-addon">
                                 <input type="checkbox" aria-label="..." id="year">
                             </span>
-                            <input type="text" class="form-control" aria-label="..."  id="year" name="year">
+                            <input type="text" class="form-control" aria-label="..."  id="year" name="year" maxlength="4">
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
@@ -197,7 +300,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
                         <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)">
+                            <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)" maxlength="10">
                         </div>
                     </div> 
                 </div>
@@ -223,8 +326,6 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
             </form>
         </div>
     </div>
-
-
 
     <? include "../views/partials/footer.php"; ?>
 
