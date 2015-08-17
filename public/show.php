@@ -29,7 +29,7 @@ if (Input::has('id')) {
 
     <div class="container main">
 
-        <div class="row">
+        <div class="row" id="listing-wrapper">
 
             <h1><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h1>
 
@@ -47,10 +47,7 @@ if (Input::has('id')) {
             <p><?= $ads[$id]['description']; ?> </p>
 
             <h3>Contact:</h3>
-            <ul>
-                <li></li>
-                <li></li>
-            </ul>
+            <a href="mailto:<?= $ads[$id]['email']; ?>"><?= $ads[$id]['email']; ?></a>
 
         </div>
 

@@ -74,10 +74,6 @@ a:hover {
     font-size: 2em;
 }
 
-#sidebar {
-	float: left;
-}
-
 .featurette-divider {
   margin: 80px 0; /* Space out the Bootstrap <hr> more */
 }
@@ -160,6 +156,7 @@ a:hover {
 	background-color: #FFFFFF;
 	height: 100%;
 	width: 100%;
+	padding: 3rem;
 }
 
 .listing {

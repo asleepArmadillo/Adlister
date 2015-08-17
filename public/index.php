@@ -64,13 +64,12 @@ $pageDown = $page - 1;
     <div class="container main">
         <div class="row">
 
-            <div class="col-xs-12 col-md-4 col-lg-4 sidebar-offcanvas" id="sidebar">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <!-- This include is for sidebar navigation -->
                 <? include "../views/partials/sidebar.php"; ?>
             </div>
 
-
-            <div id="specialDiv">
+            
             <!-- Three columns of text below the carousel -->
                 <? foreach($ads as $id => $ad): ?>
                     <div class="col-xs-12 col-md-4 col-lg-4 listing">
@@ -82,7 +81,10 @@ $pageDown = $page - 1;
                     </div>
                 <? endforeach; ?>
             </div>
+
+            
         </div>
+       
 
 
 
@@ -106,10 +108,10 @@ $pageDown = $page - 1;
 
     </div>
 
-        <div class="footer">
-            <? include "../views/partials/footer.php"; ?>
 
-        </div>
+    <div class="footer">
+        <? include "../views/partials/footer.php"; ?>
+    </div>
 
 
 
