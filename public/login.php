@@ -67,7 +67,7 @@ if (!empty($_POST))
         } 
         
     } else {
-        $errors['name'] = "Please complete ALL FIELDS!";
+        $errors['allFields'] = "Please complete ALL FIELDS!";
     }
 }
 
@@ -85,12 +85,16 @@ function pageController(){
     $password = Input::get('password');
     $userName = Input::get('user');
 
-    Auth::attempt($userName, $password);
-
+    $attempt = Auth::attempt($userName, $password);
+    if (isset($attempt)) {
+        $data['login'] = $attempt;
+    }
     return $data;
 }
 
 extract(pageController());
+
+$errors['login'] = $login;
 
 ?>
 
@@ -116,6 +120,7 @@ extract(pageController());
             <h1>Log In or Create Account</h1>
         
                 <h2>Login for Existing Users</h2>
+                <p class="error"><? if (isset($errors['login'])){ echo $errors['login'];};?></p>
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="InputEmailExisting">Email address</label>
@@ -131,6 +136,7 @@ extract(pageController());
                 </form>
         
                 <h2>Signup for New Users</h2>
+                <p class="error"><? if (isset($errors['allFields'])){ echo $errors['allFields'];};?></p>
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="name">Your Name</label><p class="error"><? if (isset($errors['name'])){ echo $errors['name'];};?></p>
