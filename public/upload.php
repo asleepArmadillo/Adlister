@@ -19,6 +19,10 @@ require_once '../bootstrap.php';
     <div class="container main">
         <h1>Thanks for posting on Instrument Exchange!</h1>
 
+    </div>
+
+    <div class="footer">
+        <? include "../views/partials/footer.php"; ?>
     </div>  
 </body>
 </head>

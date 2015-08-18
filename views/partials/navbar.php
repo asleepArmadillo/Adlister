@@ -28,15 +28,9 @@ if (Auth::check()) {
                                 <li class="active"><a>Hi, <?= $userInfo[0]['name']; ?>!</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
                                 <li><a href="/create">List Your Item</a></li>
                                 <li><a href="#">Edit/Delete Listings</a></li>
                                 <li><a href="/logout">Logout</a></li>
-=======
-                                <li><a href="ads.create.php">List Your Item</a></li>
-                                <li><a href="users.show.php">Edit/Delete Listings</a></li>
-                                <li><a href="logout.php">Logout</a></li>
->>>>>>> 57cd31341364686a61492ba2c08e83bde125d710
                             </ul>
                         <? } else { ?>
                             <ul class="nav navbar-nav navbar-left">

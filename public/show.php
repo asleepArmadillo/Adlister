@@ -32,13 +32,13 @@ $lastId = Ad::count() - 1;
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container main">
+    <div class="container">
 
-        <div class="row" class="listing-wrapper">
+        <div class="row listing-wrapper">
 
             <h1><?= $ads[$id]['title']; ?> - $<?= $ads[$id]['price']; ?></h1>
 
-            <img src="<?= $ads[$id]['image_url']; ?>" class="pull-right">
+            <img src="<?= $ads[$id]['image_url']; ?>">
 
             <h3>Details:</h3>
             <ul class="list-unstyled">
@@ -52,7 +52,7 @@ $lastId = Ad::count() - 1;
             <p><?= $ads[$id]['description']; ?> </p>
 
             <h3>Contact:</h3>
-            <a href="mailto:<?= $ads[$id]['email']; ?>"><?= $ads[$id]['email']; ?></a>
+            <a href="mailto:<?= $ads[$id]['email']; ?>"> <span class="glyphicon glyphicon-envelope"></span> <?= $ads[$id]['email']; ?></a>
 
         </div>
 
