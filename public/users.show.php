@@ -27,7 +27,7 @@ $listings = Ad::allUsersListings($user_id);
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container main">
+    <div class="container">
 
         <div class="row listing-wrapper">
 
