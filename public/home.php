@@ -77,7 +77,7 @@ $offset = ($page - 1) * $items_per_page;
 if (isset($type) && $type != 'all') {
     $ads = Ad::pagerWithCat($offset, $items_per_page, $type);
 } else {
-    $ads = Ad::pager($offset, $items_per_page);  
+    $ads = Ad::pager($offset, $items_per_page);
 }
 // var_dump($ads);
 $pageUp = $page + 1;

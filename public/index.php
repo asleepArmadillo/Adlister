@@ -15,6 +15,12 @@ switch ($url['path']) {
     case '/show/':
         include 'show.php';
         break;
+    case '/delete/':
+        include 'delete.php';
+        break;
+    case '/deletesuccess/':
+        include 'deletesuccess.php';
+        break;
     case '/logout':
         include 'logout.php';
         break;

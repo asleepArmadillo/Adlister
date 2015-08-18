@@ -100,7 +100,7 @@ class User extends Model
     public function delete()
     {
         self::dbConnect();
-        $query = 'DELETE * FROM users WHERE id = :id';
+        $query = 'DELETE FROM users WHERE id = :id';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
