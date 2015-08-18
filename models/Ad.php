@@ -27,6 +27,33 @@ class Ad extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function allUsersListings($user_id)
+    {
+        self::dbConnect();
+        $stmt = self::$dbc->prepare('SELECT L.id,
+                                    L.title, 
+                                    L.price, 
+                                    L.image_url, 
+                                    L.description, 
+                                    L.year, 
+                                    L.brand, 
+                                    L.item_condition, 
+                                    L.id,
+                                    C.type, 
+                                    C.category_id, 
+                                    U.name,
+                                    U.email
+                                    FROM listings AS L
+                                    LEFT JOIN categories AS C 
+                                    ON L.category_id = C.category_id
+                                    LEFT JOIN users AS U
+                                    ON L.user_id = U.user_id
+                                    WHERE U.user_id = :user_id');
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function count()
     {
         self::dbConnect();
