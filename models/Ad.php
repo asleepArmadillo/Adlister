@@ -15,6 +15,7 @@ class Ad extends Model
                                     L.brand, 
                                     L.item_condition, 
                                     L.id,
+                                    L.user_id,
                                     C.type, 
                                     C.category_id, 
                                     U.name,
@@ -38,7 +39,6 @@ class Ad extends Model
                                     L.year, 
                                     L.brand, 
                                     L.item_condition, 
-                                    L.id,
                                     C.type, 
                                     C.category_id, 
                                     U.name,
@@ -199,6 +199,27 @@ class Ad extends Model
         $stmt->bindValue(':id', $this->attributes['id'], PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    public static function isOwner($id)
+    {
+        if ($_SESSION['USER_ID'] != $id) {
+            header("Location: /profile");
+            exit();
+        }
+
+    }
+
+    public static function delete($id)
+    {
+        self::dbConnect();
+        $query = 'DELETE FROM listings WHERE id = :id';
+        $stmt = self::$dbc->prepare($query);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     //return query where like %query%, param query string
     // some test -> ['some', 'test'] 
     //MAYBE FOR LATER

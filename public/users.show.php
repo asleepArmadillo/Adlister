@@ -41,7 +41,10 @@ $listings = Ad::allUsersListings($user_id);
             <h2>Your listings</h2>
             <ul class="list-unstyled">
             <? foreach ($listings as $listing) { ?>
-                <li><span class="glyphicon glyphicon-remove"></span> <a href="show/?id=<?= $listing['id']-1; ?>"><?= $listing['title']; ?></a></li>
+                <li>
+                    <a href="delete/?id=<?= $listing['id']-1; ?>"<span class="glyphicon glyphicon-remove"></span> </a>
+                    <a href="show/?id=<?= $listing['id']-1; ?>"><?= $listing['title']; ?></a>
+                </li>
             <? } ?>
             </ul>
 

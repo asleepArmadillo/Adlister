@@ -13,6 +13,7 @@ class Auth {
 		} else {
 			if (password_verify($password, $data[0]['password'])) {
 				$_SESSION["LOGGED_IN_USER"]= $username;
+				$_SESSION["USER_ID"] = $data[0]['user_id'];
 			    header("Location: auth.login.php");
 			    exit();
 			} else {
