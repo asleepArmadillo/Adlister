@@ -22,7 +22,7 @@ if (!Auth::check()) {
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container main">
+    <div class="container">
 
         <div class="row listing-wrapper">
 
