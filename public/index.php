@@ -18,6 +18,9 @@ switch ($url['path']) {
     case '/logout':
         include 'logout.php';
         break;
+    case '/profile':
+        include 'users.show.php';
+        break;
     default:
         include 'home.php';
         break;
