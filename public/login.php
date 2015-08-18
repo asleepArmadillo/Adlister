@@ -85,7 +85,10 @@ function pageController(){
     $password = Input::get('password');
     $userName = Input::get('user');
 
-    $attempt = Auth::attempt($userName, $password);
+    if (Input::has('password') && Input::has('user')) {
+        $attempt = Auth::attempt($userName, $password);
+    }
+
     if (isset($attempt)) {
         $data['login'] = $attempt;
     }
@@ -94,7 +97,9 @@ function pageController(){
 
 extract(pageController());
 
-$errors['login'] = $login;
+if (isset($login)) {
+    $errors['login'] = $login;
+}
 
 ?>
 
