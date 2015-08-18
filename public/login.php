@@ -113,8 +113,9 @@ $errors['login'] = $login;
 <body>
     <? include "../views/partials/navbar.php"; ?>
 
+    <div class="container">
 
-    <div class="container main">
+        <div class="row listing-wrapper">
 
         <div class="loginFormFloat">
             <h1>Log In or Create Account</h1>
@@ -169,14 +170,15 @@ $errors['login'] = $login;
 
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
-
+            </div>
         </div>
-
     </div>
 
+    <div class="footer">
+        <? include "../views/partials/footer.php"; ?>
+    </div>
+    
 
-
-    <? include "../views/partials/footer.php"; ?>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

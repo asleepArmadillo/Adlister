@@ -234,117 +234,122 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 <body>
     <? include "../views/partials/navbar.php"; ?>
 
-    <div class="container main">
+    <div class="container">
 
-        <div class="loginFormFloat">
-            <h1>Create a New Listing</h1>
+        <div class="row listing-wrapper">
 
-            <form method="POST" enctype="multipart/form-data">
+            <div class="loginFormFloat">
+                <h1>Create a New Listing</h1>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="title">Title</label><p class="error"><? if (isset($errors['title'])){ echo $errors['title'];};?></p>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum" maxlength="70">
+                <form method="POST" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <div class="form-group">
+                                <label for="title">Title</label><p class="error"><? if (isset($errors['title'])){ echo $errors['title'];};?></p>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="70 Character Maximum" maxlength="70">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="instrument_type">Instrument Type</label><p class="error"><? if (isset($errors['instrument_type'])){ echo $errors['instrument_type'];;};?></p>
-                            <select class="form-control" id="instrument_type" name="instrument_type">
-                                <option>Accordion</option>
-                                <option>Brass</option>
-                                <option>Guitar</option>
-                                <option>Harmonica</option>
-                                <option>Percussion</option>
-                                <option>Piano / Keys</option>
-                                <option>String</option>
-                                <option>Woodwind</option>
-                                <option>Amplifier / Gear</option>
-                                <option>Other</option>
-                            </select>
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <div class="form-group">
+                                <label for="instrument_type">Instrument Type</label><p class="error"><? if (isset($errors['instrument_type'])){ echo $errors['instrument_type'];;};?></p>
+                                <select class="form-control" id="instrument_type" name="instrument_type">
+                                    <option>Accordion</option>
+                                    <option>Brass</option>
+                                    <option>Guitar</option>
+                                    <option>Harmonica</option>
+                                    <option>Percussion</option>
+                                    <option>Piano / Keys</option>
+                                    <option>String</option>
+                                    <option>Woodwind</option>
+                                    <option>Amplifier / Gear</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="brand">Brand</label><p class="error"><? if (isset($errors['brand'])){ echo $errors['brand'];};?></p>
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="..." id="brand">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..." id="brand" name="brand" maxlength="100">
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </div><!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="year">Year</label><p class="error"><? if (isset($errors['year'])){ echo $errors['year'];};?></p>
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" aria-label="..." id="year">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..."  id="year" name="year" maxlength="4">
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                </div><!-- /.row -->
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="item_condition">Condition</label><p class="error"><? if (isset($errors['item_condition'])){ echo $errors['item_condition'];};?></p>
-                            <select class="form-control" id="item_condition" name="item_condition">
-                                <option>Not Specified</option>
-                                <option>Excellent</option>
-                                <option>Very Good</option>
-                                <option>Good</option>
-                                <option>Poor</option>
-                                <option>New</option>
-                                <option>Refurbished</option>
-                                <option>For Parts / Not Working</option>
-                            </select>
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <label for="brand">Brand</label><p class="error"><? if (isset($errors['brand'])){ echo $errors['brand'];};?></p>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <input type="checkbox" aria-label="..." id="brand">
+                                </span>
+                                <input type="text" class="form-control" aria-label="..." id="brand" name="brand" maxlength="100">
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
-                        <div class="input-group">
-                            <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)" maxlength="10">
-                        </div>
-                    </div> 
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="description">Description</label><p class="error"><? if (isset($errors['description'])){ echo $errors['description'];};?></p>
-                            <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <label for="year">Year</label><p class="error"><? if (isset($errors['year'])){ echo $errors['year'];};?></p>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <input type="checkbox" aria-label="..." id="year">
+                                </span>
+                                <input type="text" class="form-control" aria-label="..."  id="year" name="year" maxlength="4">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label for="image_url">Upload Image</label><p class="error"><? if (isset($image_status)){ echo $image_status;};?></p>
-                            <input type="file" name="somefile" id="image_url" name="image_url">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <div class="form-group">
+                                <label for="item_condition">Condition</label><p class="error"><? if (isset($errors['item_condition'])){ echo $errors['item_condition'];};?></p>
+                                <select class="form-control" id="item_condition" name="item_condition">
+                                    <option>Not Specified</option>
+                                    <option>Excellent</option>
+                                    <option>Very Good</option>
+                                    <option>Good</option>
+                                    <option>Poor</option>
+                                    <option>New</option>
+                                    <option>Refurbished</option>
+                                    <option>For Parts / Not Working</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
+                    
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <label for="price">Price</label><p class="error"><? if (isset($errors['price'])){ echo $errors['price'];};?></p>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="text" class="form-control" id="price" name="price"  aria-label="Amount (to the nearest dollar)" maxlength="10">
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <div class="form-group">
+                                <label for="description">Description</label><p class="error"><? if (isset($errors['description'])){ echo $errors['description'];};?></p>
+                                <textarea class="form-control" rows="5" id="description" name="description" placeholder="50 Character Minimum"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9 col-lg-9">
+                            <div class="form-group">
+                                <label for="image_url">Upload Image</label><p class="error"><? if (isset($image_status)){ echo $image_status;};?></p>
+                                <input type="file" name="somefile" id="image_url" name="image_url">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <? include "../views/partials/footer.php"; ?>
+    <div class="footer">
+        <? include "../views/partials/footer.php"; ?>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
