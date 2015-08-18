@@ -238,7 +238,7 @@ if (!empty(Input::get('title')) && !empty(Input::get('description')) && !empty(I
 
         <div class="row listing-wrapper">
 
-            <div class="loginFormFloat">
+        <div class="loginFormFloat">
                 <h1>Create a New Listing</h1>
 
                 <form method="POST" enctype="multipart/form-data">
