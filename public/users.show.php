@@ -5,6 +5,11 @@ if (!Auth::check()) {
     exit();
 }
 
+$user = Auth::user();
+$user_id = User::loggedInUserID($user);
+
+$listings = Ad::allUsersListings($user_id);
+// var_dump($listings);
 
 
 
@@ -22,7 +27,7 @@ if (!Auth::check()) {
     <? include "../views/partials/navbar.php"; ?>
 
 
-    <div class="container">
+    <div class="container main">
 
         <div class="row listing-wrapper">
 
@@ -34,7 +39,11 @@ if (!Auth::check()) {
             </ul>
             
             <h2>Your listings</h2>
-
+            <ul>
+            <? foreach ($listings as $listing) { ?>
+                <li><a href="show/?id=<?= $listing['id']-1; ?>"><?= $listing['title']; ?></a></li>
+            <? } ?>
+            </ul>
 
         </div>
   
